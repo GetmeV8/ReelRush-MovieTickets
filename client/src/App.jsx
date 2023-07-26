@@ -61,14 +61,6 @@ function App() {
         <Route path="/" element={<Home />} />
 
 
-
-
-
-
-
-
-
-
         {/* Admin */}
 
         <Route path={"/admin"} element={<LoginPage />} />
@@ -84,12 +76,6 @@ function App() {
           <Route path={"/Cinemas"} element={<Login />} />
           <Route path={"/Cinemas/Signup"} element={<Signup />} />
           <Route path={"/approval"} element={<Approval />} />
-
-
-
-
-
-
 
 
       </Routes>
