@@ -4,12 +4,15 @@ const {Register,Login,AutherizedCheck} = require("../controllers/theatreadminCon
 const authMiddleware=require("../middlewares/authMiddlewares");
 
 //Get methods
-router.get("/checkAutherized",authMiddleware,AutherizedCheck);
+// router.get("/checkAutherized",authMiddleware,AutherizedCheck);
 
 
 //Post methods
 router.post("/register",Register);
 router.post("/login",Login);
+
+
+
 
 
 module.exports=router;

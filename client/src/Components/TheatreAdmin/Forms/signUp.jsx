@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import Theatreaxios from '../../../Assets/axiosForCinema'
-
-
 import { ToastContainer, toast } from 'react-toastify'
 
 const Signup = () => {
@@ -28,7 +26,7 @@ const Signup = () => {
             if (!values.name) {
                 error.name = 'Name Required'
             } else if (!values.email) {
-                error.email = 'Email Mismatch'
+                error.email = 'Email Required'
             } else if (!values.place) {
                 error.place = 'Place Required'
             } else if (!values.password) {
@@ -51,7 +49,7 @@ const Signup = () => {
                     navigate('/Cinemas')
                     console.log('Registeration Sucess')
                 } else if (response.data.errors) {
-                    const { email, password } = response.data.errors
+                    const {email} = response.data.errors
                     if (email) {
                         generateError(email)
                     }

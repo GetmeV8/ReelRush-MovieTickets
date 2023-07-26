@@ -16,6 +16,7 @@ import MainDash from "./Pages/Admin/Dashboard/maindash"
 import AddUser from "./Pages/Admin/Users/addUser";
 import Viewuser from "./Components/Admin/Tables/viewUsers";
 import Viewtheatre from "./Pages/Admin/Theatres/viewtheatre";
+import AddTheatre from "./Pages/Admin/Theatres/addTheatre";
 import Signupuser from "./Components/User/Auth/signup";
 import Forgotpassword from './Components/User/Auth/forgotpassword'
 import NavBar from "./Components/User/NavBar/NavBar";
@@ -69,6 +70,7 @@ function App() {
           <Route path={"view-users"} element={<Viewuser />} />
           <Route path={"add-users"} element={<AddUser />} />
           <Route path={"view-theatres"} element={<Viewtheatre />} />
+          <Route path={"add-theatres"} element={<AddTheatre />} />
 
           </Route>
 

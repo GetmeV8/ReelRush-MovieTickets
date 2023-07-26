@@ -7,18 +7,18 @@ import { ToastContainer, toast } from 'react-toastify'
 const Login = () => {
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const Cinematoken = localStorage.getItem("Cinematoken");
-    if (Cinematoken) {
-      Theatreaxios.get('/theatre/checkAutherized').then((resp) => {
-        console.log("rrrrrrrr", resp)
-        if (resp.data.resp.accepted) {
-          navigate('/CinemasPannel')
-        }
-      })
+  // useEffect(() => {
+  //   const Cinematoken = localStorage.getItem("Cinematoken");
+  //   if (Cinematoken) {
+  //     Theatreaxios.get('/theatre/checkAutherized').then((resp) => {
+  //       console.log("rrrrrrrr", resp)
+  //       if (resp.data.resp.accepted) {
+  //         navigate('/CinemasPannel')
+  //       }
+  //     })
 
-    }
-  })
+  //   }
+  // })
   const generateError = (error) =>
     toast.error(error, {
       position: 'bottom-right',

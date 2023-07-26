@@ -132,7 +132,7 @@ const Sidebar = () => {
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block duration-300 hover:bg-[#ffffff] hover:text-black hover:rounded-lg hover:px-3"
-                  to="add-theaters"
+                  to="add-theatres"
                 >
                   <i className="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i> Add Theaters
                 </Link>
@@ -141,7 +141,7 @@ const Sidebar = () => {
               <li className="items-center">
                 <Link
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block duration-300 hover:bg-[#ffffff] hover:text-black hover:rounded-lg hover:px-3"
-                  to="view-theaters"
+                  to="view-theatres"
                 >
                   <i className="fas fa-user-circle text-blueGray-400 mr-2 text-sm"></i> View Theaters
                 </Link>

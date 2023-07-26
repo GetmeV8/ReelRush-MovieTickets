@@ -1,4 +1,5 @@
 const adminModel = require("../models/adminModel");
+const theatreadminModel = require("../models/theatreadminModel");
 const userModel = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -83,19 +84,43 @@ module.exports = {
     },
     addUser: async (req, res, next) => {
         try {
-            const { email,name, phone, password, } = req.body;
-            const user = await userModel.create({ email,name, phone, password });
-            console.log(user);
-            console.log(req.body);
-
+            const { email, name, phone, password, } = req.body;
+            const user = await userModel.create({ email, name, phone, password });
             res.send({ created: true });
         } catch (error) {
             const errors = handleErrors(error);
             res.json({ errors, created: false });
-            console.log("Hereee",error);
         }
     },
+    allTheatres: async (req, res) => {
+        try {
+            theatreadminModel.find({}, { password: 0 }).then((resp) => {
+                res.status(200).send(resp);
+            });
+        } catch (error) {
+            res.status(404).send(error);
+        }
+    },
+    theatreAccept: async (req, res) => {
+        try {
+            const { email, status } = await req.body;
 
+            theatreadminModel.updateOne({ email: email }, { accepted: status })
+                .then((resp) => {
+                    if (status) {
+                        res.status(200).send({ msg: "user accepted" });
+                    } else {
+                        res.status(200).send({ msg: "user Rejected" });
+                    }
+                })
+                .catch((err) => {
+                    res.status(404).send(err);
+                });
+        } catch (error) {
+            res.status(404).send(error);
+        }
+    },
+  
 }
 
 

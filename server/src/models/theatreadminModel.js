@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
-
-
 const screenSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -26,9 +24,6 @@ const screenSchema = new mongoose.Schema({
     required: true,
   }
 });
-
-
-
 
 const theaterAdminSchema = new mongoose.Schema({
   email: {

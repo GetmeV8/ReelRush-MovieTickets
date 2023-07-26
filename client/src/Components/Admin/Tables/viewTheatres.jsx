@@ -6,18 +6,45 @@ const Viewtheatres = () => {
     const [Theatres, setTheatre] = useState([]);
     const [accept, setAccept] = useState(false);
 
+    useEffect(() => {
+        axios.get('/admin/allTheatres')
+          .then((response) => {
+            console.log(response.data,"data");
+            setTheatre(response.data);
+            // setAccept()
+          })
+          
+      }, [])
 
+    // function authorizetheatre(theatre, status, index) {
+    //     axios.post('/admin/accept', { ...theatre, status }).then((response) => {
+    //         const updatedtheatres = Theatres.map((value) => {
+    //             if (value.email === Theatres.email) {
+    //                 return { ...value, accepted: status };
+    //             }
+    //             return value;
+    //         });
+    //         setTheatre(updatedtheatres)
+    //     });
+    // }
     function authorizetheatre(theatre, status, index) {
-        axios.patch('/admin/accept', { ...theatre, status }).then((response) => {
-            const updatedTheaters = Theatres.map((value) => {
-                if (value.email === Theatres.email) {
-                    return { ...value, accepted: status };
+        axios.post('/admin/accept', { ...theatre, status })
+          .then((response) => {
+            // Update the state with the updated data from the server
+            setTheatre(prevTheatres => {
+              const updatedTheatres = prevTheatres.map((value, i) => {
+                if (i === index) {
+                  return { ...value, accepted: status };
                 }
                 return value;
+              });
+              return updatedTheatres;
             });
-            setTheatre(updatedTheaters)
-        });
-    }
+          })
+          .catch((error) => {
+            // Handle error if needed
+          });
+      }
 
     return (
         <>
@@ -38,37 +65,36 @@ const Viewtheatres = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {Theaters.map((theater, index) => (
+                            {Theatres.map((theatre, index) => (
                                 <tr key={index} className="bg-white border-b">
                                     <th
                                         scope="row"
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black"
                                     >
-                                        {theater.email}
+                                        {theatre.email}
                                     </th>
                                     <td className="px-6 py-4 text-black font-medium">
-                                        {theater.place}
+                                        {theatre.place}
                                     </td>
                                     <td className="px-6 py-4 items-center flex justify-center">
-                                        {theater.accepted ? (<button
+                                        {theatre.accepted ? (<button
                                             type="button"
                                             className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800  disabled:opacity-25" disabled
                                         > ACCEPT </button>) : (<button
                                             type="button"
                                             className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800  "
                                             onClick={() => {
-                                                authorizetheatre(theater, true, index)
+                                                authorizetheatre(theatre, true, index)
 
                                             }
                                             }
                                         >ACCEPT </button>)}
 
-                                        {theater.accepted ? (<button
+                                        {theatre.accepted ? (<button
                                             type="button"
                                             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                                             onClick={() => {
-                                                authorizetheatre(theater, false, index)
-
+                                                authorizetheatre(theatre, false, index)
                                             }}
                                         >
                                             REJECT
@@ -78,8 +104,6 @@ const Viewtheatres = () => {
                                         >
                                             REJECT
                                         </button>}
-
-
                                     </td>
                                 </tr>
                             ))}
