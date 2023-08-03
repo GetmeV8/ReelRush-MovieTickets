@@ -19,6 +19,16 @@ const Login = () => {
 
   //   }
   // })
+  useEffect(() => {
+    const Cinematoken = localStorage.getItem("Cinematoken");
+    if (Cinematoken) {
+       
+          navigate('/CinemasPannel')
+    }
+  })
+
+
+
   const generateError = (error) =>
     toast.error(error, {
       position: 'bottom-right',
@@ -44,23 +54,22 @@ const Login = () => {
         const response = await Theatreaxios.post(
           '/theatreAdmin/login',
           { ...values },
-          { withCredentials: true },
+          { withCredentials: true },   
         )
-        console.log("rrrrrrrr", response)
-
         if (response.data.error === "Admin Not accepted") {
           console.log("403333")
           navigate('/approval')
-          console.log(response.data)
           localStorage.setItem("Cinematoken", response.data.token);
-          console.log(response.data.error, 'error')
+          console.log("TOKEN ERROR",response.data.error, 'error')
           console.log('Waiting to Approve')
         } else if (response.data.created === true) {
+          console.log("createddddd")
           localStorage.setItem("Cinematoken", response.data.token);
           navigate('/CinemasPannel')
           console.log(response.data.created, 'created')
           console.log('Login Success')
         } else if (response.data.error === 'Invalid email or password') {
+          console.log(response.data)
           generateError(response.data.error, 'invalid error')
           console.log('Invalid email or password')
         }

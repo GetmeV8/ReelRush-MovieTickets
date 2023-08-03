@@ -14,9 +14,20 @@ import LoginPage from "./Components/Admin/Auth/loginPage";
 import Dashboard from "./Pages/Admin/Dashboard/dashboard";
 import MainDash from "./Pages/Admin/Dashboard/maindash"
 import AddUser from "./Pages/Admin/Users/addUser";
+import ViewMovies from "./Pages/Admin/Movies/viewmovies";
+import AddMovies from "./Pages/Admin/Movies/addmovies";
 import Viewuser from "./Components/Admin/Tables/viewUsers";
 import Viewtheatre from "./Pages/Admin/Theatres/viewtheatre";
 import AddTheatre from "./Pages/Admin/Theatres/addTheatre";
+
+
+import CinemasPannel from "./Pages/TheatreAdmin/Dashboard/dashboard";
+import DashBoard from "./Pages/TheatreAdmin/Dashboard/DashBoardData"
+import Addscreen from "./Pages/TheatreAdmin/Screens/addScreen";
+import ViewScreens from "./Pages/TheatreAdmin/Screens/viewScreens";
+import ViewShow from "./Pages/TheatreAdmin/Screens/viewShow";
+import AddShow from "./Pages/TheatreAdmin/Screens/addShows";
+
 import Signupuser from "./Components/User/Auth/signup";
 import Forgotpassword from './Components/User/Auth/forgotpassword'
 import NavBar from "./Components/User/NavBar/NavBar";
@@ -69,15 +80,30 @@ function App() {
           <Route index element={<MainDash />} />
           <Route path={"view-users"} element={<Viewuser />} />
           <Route path={"add-users"} element={<AddUser />} />
+          <Route path={"view-movies"} element={<ViewMovies />} />
+          <Route path={"add-movies"} element={<AddMovies />} />
           <Route path={"view-theatres"} element={<Viewtheatre />} />
           <Route path={"add-theatres"} element={<AddTheatre />} />
 
-          </Route>
+        </Route>
 
-          {/*Cinemas*/}
-          <Route path={"/Cinemas"} element={<Login />} />
-          <Route path={"/Cinemas/Signup"} element={<Signup />} />
-          <Route path={"/approval"} element={<Approval />} />
+        {/*Cinemas*/}
+        <Route path={"/Cinemas"} element={<Login />}/>
+        <Route path={"/Cinemas/Signup"} element={<Signup/>} />
+        <Route path={"/approval"} element={<Approval />}/>
+        <Route path={"/CinemasPannel"} element={<CinemasPannel/>}>
+        <Route index element={<DashBoard />} />
+        <Route path={"add-screen"} element={<Addscreen/>} />
+        <Route path={"view-screens"} element={<ViewScreens/>}/>
+        <Route path={"add-Show"} element={<AddShow/>}/>
+        <Route path={"view-Show"} element={<ViewShow />} />
+
+
+
+
+
+        </Route>
+
 
 
       </Routes>

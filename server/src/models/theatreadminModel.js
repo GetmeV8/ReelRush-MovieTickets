@@ -5,7 +5,6 @@ const screenSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, " Screen Name is require"],
-    unique: true,
   },
   seating_capacity: {
     type: Number,
@@ -49,10 +48,21 @@ const theaterAdminSchema = new mongoose.Schema({
   screens:[screenSchema]
 });
 
+// theaterAdminSchema.pre("save", async function (next) {
+//   const salt = await bcrypt.genSalt();
+//   this.password = await bcrypt.hash(this.password, salt);
+// });
 theaterAdminSchema.pre("save", async function (next) {
-  const salt = await bcrypt.genSalt();
-  this.password = await bcrypt.hash(this.password, salt);
+  // No bcrypt hashing, store the password in plain text
+  // Note: This is not secure and not recommended for production use
+  // You should consider using bcrypt or other secure hashing methods
+
+  // Save the password as it is (plain text)
+  // Ensure you understand the risks associated with storing passwords in plain text
+  // before using this approach in a production application
+  next();
 });
+
 
 module.exports = mongoose.model("theatres", theaterAdminSchema);
 

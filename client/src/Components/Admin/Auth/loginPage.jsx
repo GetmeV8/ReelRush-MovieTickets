@@ -15,7 +15,6 @@ const LoginPage = () => {
     useEffect(() => {
         const Admintoken = localStorage.getItem("Admintoken");
         if (Admintoken) {
-            console.log(Admintoken);
             navigate('/dashboard')
         }
     },[])

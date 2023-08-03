@@ -4,8 +4,6 @@ import React from 'react';
 import Viewtheatres from '../../../Components/Admin/Tables/viewTheatres';
 
 const Viewtheatre =()=>{
-
-
     return(
         <Viewtheatres></Viewtheatres>
     )

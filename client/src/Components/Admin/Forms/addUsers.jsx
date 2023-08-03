@@ -76,7 +76,7 @@ const Addusers = () => {
   })
 
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-screen flex justify-center items-center bg-white">
       <form className="w-full max-w-lg ml-4" onSubmit={formik.handleSubmit}>
         <h1 className="font-bold text-2xl items-center justify-center flex mb-11">
           ADD USER
