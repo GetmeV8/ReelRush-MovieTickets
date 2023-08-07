@@ -51,7 +51,6 @@ function App() {
 
 
   const access = authTokens?.access
-  console.log(access);
 
   // const Cinematoken = localStorage.getItem("Cinematoken")
   // const [CinemaloggedIn, setCinemaLoggedIn] = useState(null);

@@ -38,6 +38,7 @@ function Login() {
         },
         onSubmit: async (values) => {
             try {
+                const token = localStorage.getItem("authTokens");
                 const response = await userAxios.post(
                     '/login',
                     {

@@ -1,5 +1,6 @@
 import axios from "axios";
-const token = localStorage.getItem('token')
+const authTokens = JSON.parse(localStorage.getItem('authTokens'))
+const token = authTokens?.access
 const baseURL= "http://localhost:8080" 
 const instance = axios.create({
   baseURL,

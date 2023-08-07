@@ -66,9 +66,10 @@ function Seatselect() {
     updateBookedSeats();
   }, [bookedSeats]);
 
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("authTokens");
 
   function reservation(selectedSeat, data) {
+    console.log("TOKEN::::-----",token);
     if (selectedSeat.length <= 0) {
       swal({
         title: "Select Seat first!",
@@ -76,7 +77,7 @@ function Seatselect() {
         icon: "warning",
         dangerMode: false,
       });
-    } 
+    }
     else {
       if (!token) {
         swal({
@@ -87,9 +88,8 @@ function Seatselect() {
         }).then(() => {
           navigate("/login");
         });
-      } 
-      else 
-      {
+      }
+      else {
         userAxios
           .post(
             "/seatbook",
@@ -149,67 +149,67 @@ function Seatselect() {
 
   return (
     <>
-     <div className="Main-container bg-black">
-      <div className="mainMid-container">
-        <div className="Mid-container bg-black">
-          <div className="seat-container bg-black">
-            {coulumSeat.map((value, index) => (
-              <div className="column-countainer" key={value}>
-                {seat.map((data, index) => (
-                  <button
-                    className={`Seat ${selectedSeat.includes(value + index) ? "selected" : ""}`}
-                    value={value + index}
-                    id={value + index}
-                    key={value + index}
-                    onClick={Seatselect}
-                  >
-                    {value}
-                    {data}
-                  </button>
-                ))}
+      <div className="Main-container bg-black">
+        <div className="mainMid-container">
+          <div className="Mid-container bg-black">
+            <div className="seat-container bg-black">
+              {coulumSeat.map((value, index) => (
+                <div className="column-countainer" key={value}>
+                  {seat.map((data, index) => (
+                    <button
+                      className={`Seat ${selectedSeat.includes(value + index) ? "selected" : ""}`}
+                      value={value + index}
+                      id={value + index}
+                      key={value + index}
+                      onClick={Seatselect}
+                    >
+                      {value}
+                      {data}
+                    </button>
+                  ))}
+                </div>
+              ))}
+              <div className="Screen-container">
+                <FourKIcon sx={{ fontSize: 60 }} />
+                All eyes this way
+                <div className="theater"></div>
               </div>
-            ))}
-            <div className="Screen-container">
-              <FourKIcon sx={{ fontSize: 60 }} />
-              All eyes this way
-              <div className="theater"></div>
             </div>
-          </div>
-          <div className="mr-10 detiales-container border-2 text-white text-center">
-            <div>
-              <h1 className="text-white ">
-                <span className="text-[#29fadede] text-3xl ">
-                  {data?.Screen?.Movie?.moviename} - {data?.Screen?.Movie?.language}
-                </span>{" "}
+            <div className="mr-10 detiales-container border-2 text-white text-center">
+              <div>
+                <h1 className="text-white ">
+                  <span className="text-[#29fadede] text-3xl ">
+                    {data?.Screen?.Movie?.moviename} - {data?.Screen?.Movie?.language}
+                  </span>{" "}
+                </h1>
+                <hr />
+              </div>
+              <h1 className="mt-2 text-red-500">{data?.Screen?.theater?.screen?.name}</h1>
+              <h1 className="mt-4">
+                {data?.date.toLocaleDateString()} - {data?.time}
               </h1>
-              <hr />
+              <h1 className="mt-3">Selected Seats</h1>
+              <h1 className="mt-3">{selectedSeat.join(", ")}</h1>
+              {selectedSeat.length > 0 && (
+                <h2 className="mt-3 mb-3">
+                  {data?.Screen?.TicketPrice} * {selectedSeat.length} ={" "}
+                  {selectedSeat.length * data?.Screen?.TicketPrice}
+                </h2>
+              )}
+              <button
+                onClick={() => {
+                  reservation(selectedSeat, data);
+                }}
+                className="bg-[#ffff] text-black px-2 rounded-lg hover:bg-[#b48d8d]"
+              >
+                Book Your Seat
+              </button>
             </div>
-            <h1 className="mt-2 text-red-500">{data?.Screen?.theater?.screen?.name}</h1>
-            <h1 className="mt-4">
-              {data?.date.toLocaleDateString()} - {data?.time}
-            </h1>
-            <h1 className="mt-3">Selected Seats</h1>
-            <h1 className="mt-3">{selectedSeat.join(", ")}</h1>
-            {selectedSeat.length > 0 && (
-              <h2 className="mt-3 mb-3">
-                {data?.Screen?.TicketPrice} * {selectedSeat.length} ={" "}
-                {selectedSeat.length * data?.Screen?.TicketPrice}
-              </h2>
-            )}
-            <button
-              onClick={() => {
-                reservation(selectedSeat, data);
-              }}
-              className="bg-[#ffff] text-black px-2 rounded-lg hover:bg-[#b48d8d]"
-            >
-              Book Your Seat
-            </button>
           </div>
         </div>
       </div>
-    </div>
     </>
-   
+
   );
 }
 

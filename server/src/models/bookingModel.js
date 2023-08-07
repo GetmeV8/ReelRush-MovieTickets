@@ -67,7 +67,7 @@ const screenSchema = new mongoose.Schema({
 
 const bookingSchema = new mongoose.Schema({
     BookingDate: { type: Date, required: true },
-    CompletPayment: { type: Boolean, required: true },
+    CompletePayment: { type: Boolean, required: true },
     user: {
         email: { type: String, required: true }
     },

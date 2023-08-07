@@ -119,7 +119,7 @@ module.exports = {
                 .find({ $or: [{ isBlocked: { $exists: false } }, { isBlocked: false }] }).sort({ "releasedate": -1 }).limit(8)
                 .then((resp) => {
                     res.json(resp)
-                    console.log(resp)
+                    // console.log(resp)
                 })
                 .catch((err) => {
                     res.json(err)
@@ -185,37 +185,37 @@ module.exports = {
             res.status(404).send(error);
         }
     },
-    seatbooking : async(req, res, next) => {
-    const { email } = req.user;
-    try {
-        bookingModel.create({
-            BookingDate: req.body.BookingDate.split("T")[0],
-            CompletPayment: false,
-            user: {
-                email: email,
-            },
-            show: {
-                date: req.body.show.date.split("T")[0],
-                time: req.body.show.time,
-                SeatNumber: req.body.show.SeatNumber,
-                price: req.body.show.price,
-                TotalPrice: req.body.show.TotalPrice,
-            },
-            movie: req.body.movie,
-            theater: req.body.theater,
-        })
-            .then((resp) => {
-                // console.log(resp);
-                res.status(200).send(resp);
+    seatbooking: async (req, res, next) => {
+        const { email } = req.user;
+        try {
+            bookingModel.create({
+                BookingDate: req.body.BookingDate.split("T")[0],
+                CompletePayment: false,
+                user: {
+                    email: email,
+                },
+                show: {
+                    date: req.body.show.date.split("T")[0],
+                    time: req.body.show.time,
+                    SeatNumber: req.body.show.SeatNumber,
+                    price: req.body.show.price,
+                    TotalPrice: req.body.show.TotalPrice,
+                },
+                movie: req.body.movie,
+                theater: req.body.theater,
             })
-            .catch((err) => {
-                console.log(err);
-            });
-    } catch (error) {
-        console.log(error);
-        res.status(404).send(error);
+                .then((resp) => {
+                    console.log(resp);
+                    res.status(200).send(resp);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        } catch (error) {
+            console.log(error);
+            res.status(404).send(error);
+        }
     }
-}
 }
 
 

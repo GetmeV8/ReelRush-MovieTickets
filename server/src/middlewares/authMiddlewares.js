@@ -10,7 +10,6 @@ function authMiddleware(req, res, next) {
   try {
     console.log(Authtoken)
     const decoded = jwt.verify(token, 'secret');
-    console.log("00000",req.user)
     req.user = decoded;
     console.log("00000000",decoded)
     next();
