@@ -19,6 +19,11 @@ import AddMovies from "./Pages/Admin/Movies/addmovies";
 import Viewuser from "./Components/Admin/Tables/viewUsers";
 import Viewtheatre from "./Pages/Admin/Theatres/viewtheatre";
 import AddTheatre from "./Pages/Admin/Theatres/addTheatre";
+import MoviePage from "./Pages/User/Home/MoviePage"
+import TheatreSelect from "./Pages/User/BookingPage/BookingPage"
+import SeatSelector from "./Pages/User/SeatSelector/seatSelector";
+import Checkout from "./Components/User/Booking/checkOut";
+
 
 
 import CinemasPannel from "./Pages/TheatreAdmin/Dashboard/dashboard";
@@ -71,6 +76,14 @@ function App() {
         <Route path="/signup" element={<Signupuser />} />
         <Route path="/forgotpassword" element={<Forgotpassword />} />
         <Route path="/" element={<Home />} />
+        <Route path={"/movie/:id"} element={<MoviePage />} />
+        <Route path={"/SelectTheater/:MovieId"} element={<TheatreSelect/>} />
+        <Route path={"/movieseat"}  element={<SeatSelector/>}/>
+        <Route path={"/Checkout"} element={<Checkout />}/>
+
+
+
+
 
 
         {/* Admin */}

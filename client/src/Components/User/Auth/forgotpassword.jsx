@@ -19,6 +19,7 @@ const ForgotPassword = () => {
     };
 
     return (
+        <>
         <section className="h-screen bg-black text-white justify-center items-center">
             <div className="container mx-auto flex justify-center items-center h-full">
                 {/* Form */}
@@ -76,6 +77,9 @@ const ForgotPassword = () => {
                 </div>
             </div>
         </section>
+        
+        </>
+        
     );
 };
 

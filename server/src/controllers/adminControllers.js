@@ -178,38 +178,6 @@ module.exports = {
             return res.status(500).json({ success: false, error: "Something went wrong" });
         }
     },
-    
-    // addMovie: async (req, res, next) => {
-    //     try {
-    //         const {
-    //             moviename,
-    //             releasedate,
-    //             description,
-    //             posterUrl1,
-    //             posterUrl2,
-    //             posterUrl3,
-    //             trailerlink,
-    //             genre,
-    //             language,
-    //         } = req.body;
-    //         const movie = {
-    //             moviename,
-    //             releasedate: new Date(releasedate), // Parse the date correctly
-    //             description,
-    //             poster1: posterUrl1,
-    //             poster2: posterUrl2,
-    //             poster3: posterUrl3,
-    //             genre,
-    //             language,
-    //             trailerlink,
-    //         };
-    //         const createdMovie = await movieModel.create(movie);
-    //         res.send({ success: true, message: "Movie Added successfully", movie: createdMovie });
-    //     } catch (error) {
-    //         console.error("00000", error); // Log the error for debugging purposes
-    //         res.status(500).send({ success: false, error: "Something went wrong" });
-    //     }
-    // },
     allMovies: async (req, res, next) => {
         try {
             await movieModel.find({}).then((response => {

@@ -91,7 +91,6 @@ const Addmovieform = () => {
         if (response.data.message) {
           navigate("/dashboard/view-movies");
         } else {
-          setErrorMessage(response.data.error);
           console.log(response.data, "Something went wrong");
         }
       } catch (error) {

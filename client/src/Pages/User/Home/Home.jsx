@@ -8,9 +8,7 @@ import Footer from "../../../Components/User/Footer/footer";
 
 const Home = (props) => {
   return (
-   
-    
-  
+
     <>
       <NavBar/>
       <Premiers/>
@@ -18,8 +16,6 @@ const Home = (props) => {
       <CurrentMovies/>
       <Footer/>
     </>
-
-
 
   );
 };

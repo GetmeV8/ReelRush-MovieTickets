@@ -1,7 +1,10 @@
-const userModel = require("../models/userModel")
-const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
-const movieModel = require("../models/movieModel")
+const userModel = require("../models/userModel");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const movieModel = require("../models/movieModel");
+const theatreadminModel = require("../models/theatreadminModel");
+const showModel = require("../models/showModel");
+const bookingModel = require("../models/bookingModel");
 
 
 
@@ -113,9 +116,10 @@ module.exports = {
     newrelease: async (req, res, next) => {
         try {
             movieModel
-                .find().sort({ "releasedate": -1 }).limit(8)
+                .find({ $or: [{ isBlocked: { $exists: false } }, { isBlocked: false }] }).sort({ "releasedate": -1 }).limit(8)
                 .then((resp) => {
                     res.json(resp)
+                    console.log(resp)
                 })
                 .catch((err) => {
                     res.json(err)
@@ -123,7 +127,95 @@ module.exports = {
         } catch (error) {
             res.status(404).send(error)
         }
+    },
+    singleMovie: async (req, res, next) => {
+        try {
+            movieModel.findOne({ _id: req.params.id }).then((resp) => {
+                res.json(resp);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    findtheatre: async (req, res, next) => {
+        const MovieId = req.params.id;
+        try {
+            theatreadminModel.find({ "screens.shows.MovieID": MovieId }).then(
+                (resp) => {
+                    // console.log(resp);
+                    res.json(resp);
+                }
+            );
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    findShow: async (req, res, next) => {
+        const id = req.params.id;
+        try {
+            showModel.find({ "Movie._id": id }).then((resp) => {
+                res.status(200).send(resp);
+            });
+        } catch (error) {
+            res.status(404).send(error);
+        }
+    },
+    seatusage: async (req, res, next) => {
+        try {
+            const date = req.body.date.split("T")[0];
+            let screenseats = await showModel.findOne(
+                { "theater.screen._id": req.body.screen_id },
+                { "theater.screen": true }
+            );
+            bookingModel.find(
+                {
+                    "show.date": new Date(date),
+                    "show.time": req.body.time,
+                    "theater.screen._id": req.body.screen_id,
+                },
+                { show: true, theater: true }
+            ).then((resp) => {
+                let seats = [];
+                resp.map((value) => {
+                    seats.push(...value.show.SeatNumber);
+                });
+                res.status(200).send({ seats, screenseats });
+            });
+        } catch (error) {
+            res.status(404).send(error);
+        }
+    },
+    seatbooking : async(req, res, next) => {
+    const { email } = req.user;
+    try {
+        bookingModel.create({
+            BookingDate: req.body.BookingDate.split("T")[0],
+            CompletPayment: false,
+            user: {
+                email: email,
+            },
+            show: {
+                date: req.body.show.date.split("T")[0],
+                time: req.body.show.time,
+                SeatNumber: req.body.show.SeatNumber,
+                price: req.body.show.price,
+                TotalPrice: req.body.show.TotalPrice,
+            },
+            movie: req.body.movie,
+            theater: req.body.theater,
+        })
+            .then((resp) => {
+                // console.log(resp);
+                res.status(200).send(resp);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    } catch (error) {
+        console.log(error);
+        res.status(404).send(error);
     }
+}
 }
 
 

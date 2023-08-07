@@ -3,13 +3,22 @@ const {
    register,
    login,
    newrelease,
+   singleMovie,
+   findtheatre,
+   findShow,
+   seatusage,
+   seatbooking,
 } = require('../controllers/userControllers');
+const verifyAuth = require("../middlewares/authMiddlewares")
 //    const express = require("express");
 const router = express.Router();
 
 
 // Get method
 router.get("/new-releases",newrelease);
+router.get("/Movie/:id",singleMovie);
+router.get("/findtheater/:id", findtheatre);
+router.get("/findShow/:id", findShow);
 
 
 
@@ -19,6 +28,8 @@ router.get("/new-releases",newrelease);
 //post methods
 router.post("/signup", register);
 router.post("/login",login);
+router.post("/seatusage", seatusage);
+router.post("/seatbook",verifyAuth,seatbooking)
 // router.post("/verify",verify);
 
 
