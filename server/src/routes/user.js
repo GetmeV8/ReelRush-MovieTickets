@@ -8,6 +8,8 @@ const {
    findShow,
    seatusage,
    seatbooking,
+   order,
+   confirmPayment,
 } = require('../controllers/userControllers');
 const verifyAuth = require("../middlewares/authMiddlewares")
 //    const express = require("express");
@@ -30,6 +32,9 @@ router.post("/signup", register);
 router.post("/login",login);
 router.post("/seatusage", seatusage);
 router.post("/seatbook",verifyAuth,seatbooking)
+router.post("/order",verifyAuth,order)
+router.post("/confirmPayment",verifyAuth,confirmPayment);
+
 // router.post("/verify",verify);
 
 

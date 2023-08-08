@@ -17,6 +17,8 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.3.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "razorpay": "^2.9.1",
+    "shortid": "^2.2.16"
   }
 }

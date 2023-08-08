@@ -5,6 +5,7 @@ const movieModel = require("../models/movieModel");
 const theatreadminModel = require("../models/theatreadminModel");
 const showModel = require("../models/showModel");
 const bookingModel = require("../models/bookingModel");
+const { createOrder } = require("../config/razorpay");
 
 
 
@@ -215,7 +216,47 @@ module.exports = {
             console.log(error);
             res.status(404).send(error);
         }
-    }
+    },
+    order: async (req, res, next) => {
+        try {
+            const { email } = req.user;
+            const { amount } = req.body;
+
+            // Assuming createOrder is a function that creates the order
+            const createdOrder = await createOrder(amount);
+
+            // Add userEmail and userName properties to the created order
+            createdOrder.userEmail = email;
+            createdOrder.userName = email.split("@")[0];
+
+            // Send the order as the response
+            res.send(createdOrder);
+        } catch (error) {
+            // Handle any errors that occurred during order creation
+            console.error(error);
+            res.status(500).json({ error: 'Failed to create the order' });
+        }
+    },
+    confirmPayment: async (req, res, next) => {
+        try {
+            const { email } = req.user;
+            const { bookingid } = req.body;   
+
+            // Find the booking details for the given email
+            const details = await bookingModel.find({ 'user.email': email });
+
+            // Update the booking with the given bookingid to mark it as CompletePayment
+            const response = await bookingModel.updateOne({ _id: bookingid }, { CompletePayment: true });
+
+            // Send the response with status 200 and data
+            res.status(200).json({ response, details });
+        } catch (error) {
+            // Handle any errors that occurred during payment confirmation
+            console.error("Error confirming payment:", error);
+            res.status(500).json({ error: 'Failed to confirm the payment' });
+        }
+    },
+
 }
 
 

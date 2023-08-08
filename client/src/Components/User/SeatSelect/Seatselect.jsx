@@ -69,7 +69,6 @@ function Seatselect() {
   const token = localStorage.getItem("authTokens");
 
   function reservation(selectedSeat, data) {
-    console.log("TOKEN::::-----",token);
     if (selectedSeat.length <= 0) {
       swal({
         title: "Select Seat first!",

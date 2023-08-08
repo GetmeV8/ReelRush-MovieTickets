@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import Payment from "./Payment";
+import Payment from "./Payment";
 import { useLocation, useNavigate } from "react-router-dom";
 
 
@@ -95,7 +95,7 @@ const ProductBillingPage = () => {
                                         />
                                     </div>
                                 </div>
-                                {/* <Payment amount={checkoutDetails?.totalprice} bookingid={checkoutDetails?.Bookingid} /> */}
+                                <Payment amount={checkoutDetails?.totalprice} bookingid={checkoutDetails?.Bookingid} />
                             </div>
                         </div>
                     </div>
