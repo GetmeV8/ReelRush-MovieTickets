@@ -240,7 +240,7 @@ module.exports = {
     confirmPayment: async (req, res, next) => {
         try {
             const { email } = req.user;
-            const { bookingid } = req.body;   
+            const { bookingid } = req.body;
 
             // Find the booking details for the given email
             const details = await bookingModel.find({ 'user.email': email });
@@ -256,6 +256,16 @@ module.exports = {
             res.status(500).json({ error: 'Failed to confirm the payment' });
         }
     },
+    getAllLocations : async (req, res) => {
+        try {
+          const locations = await theatreadminModel.distinct('place');
+          console.log(locations)
+          res.status(200).json(locations);
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ error: 'Failed to fetch locations' });
+        }
+      },
 
 }
 
