@@ -69,9 +69,14 @@ const NavBar = () => {
           </div>
 
           <ul className="flex space-x-4">
-            <li className="px-4 py-2">Movies</li>
-            <li className="px-4 py-2 truncate">Coming Soon</li>
-            <li className="px-4 py-2">About</li>
+            <li className="px-4 py-2 truncate">About</li>
+            <li className="px-4 py-2 relative">
+              <Link to="/profile" >
+                <button className="cursor-pointer focus:outline-none">
+                  <span className="text-white">Profile</span>
+                </button>
+              </Link>
+            </li>
             <li className="px-4 py-2 relative">
               <button
                 className="cursor-pointer focus:outline-none"
@@ -133,14 +138,11 @@ const NavBar = () => {
           }
         >
           <ul className="shadow-2xl pt-24 uppercase text-white">
-            <li className="p-4 shadow-2xl hover:bg-[#F80144] cursor-pointer rounded-full">
-              Movies
-            </li>
             <li className="p-4 shadow-2xl hover:bg-[#F80144] cursor-pointer rounded-full truncate">
-              Coming Soon
+              About
             </li>
             <li className="p-4 shadow-2xl hover:bg-[#F80144] cursor-pointer rounded-full">
-              About
+              Profile
             </li>
             <li className="p-4 shadow-2xl hover:bg-[#F80144] cursor-pointer rounded-full truncate">
               Sign In
