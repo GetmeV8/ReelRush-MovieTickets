@@ -18,7 +18,7 @@ const NavBar = () => {
   const handleNav = () => {
     setNav(!nav);
   };
-
+  
 
   useEffect(() => {
     const fetchLocations = async () => {
@@ -34,6 +34,7 @@ const NavBar = () => {
     fetchLocations();
   }, []);
 
+   const user = useSelector((state) => state.user);
 
 
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -71,7 +72,7 @@ const NavBar = () => {
           <ul className="flex space-x-4">
             <li className="px-4 py-2 truncate">About</li>
             <li className="px-4 py-2 relative">
-              <Link to="/profile" >
+              <Link to="/profile">
                 <button className="cursor-pointer focus:outline-none">
                   <span className="text-white">Profile</span>
                 </button>

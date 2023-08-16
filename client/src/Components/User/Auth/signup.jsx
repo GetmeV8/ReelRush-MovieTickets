@@ -10,11 +10,11 @@ const token = localStorage.getItem('authTokens');
 function Signup() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (token) {
-      navigate('/');
-    }
-  }, [token, navigate]);
+  // useEffect(() => {
+  //   if (token) {
+  //     navigate('/');
+  //   }
+  // }, [token, navigate]);
 
   const generateError = (error) => {
     toast.error(error, {

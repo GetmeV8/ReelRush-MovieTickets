@@ -79,7 +79,7 @@ module.exports = {
                         //     res.status(401).json({ error: "User Not Verified." })
                         // } 
                         else {
-                            const token = jwt.sign({ email }, "secret");
+                            const token = jwt.sign({ email,id:user._id }, "secret");
                             res.json({ created: true, data: { access: token, refresh: "" } });
                             console.log("yaaay passwords match");
                             // res.status(200).send({message:"user logged in"})
@@ -161,6 +161,23 @@ module.exports = {
             res.status(404).send(error);
         }
     },
+    findUserDetails: async (req, res, next) => {
+        const userId = req.user.id
+        try {
+            const userDetails = await userModel.findById(userId);
+            if (!userDetails) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+
+            // Now fetch booking history based on user's email
+            const bookingHistory = await bookingModel.find({ 'user.email': userDetails.user.email });
+
+            res.json({ userDetails, bookingHistory });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }, 
     seatusage: async (req, res, next) => {
         try {
             const date = req.body.date.split("T")[0];
@@ -256,16 +273,16 @@ module.exports = {
             res.status(500).json({ error: 'Failed to confirm the payment' });
         }
     },
-    getAllLocations : async (req, res) => {
+    getAllLocations: async (req, res) => {
         try {
-          const locations = await theatreadminModel.distinct('place');
-          console.log(locations)
-          res.status(200).json(locations);
+            const locations = await theatreadminModel.distinct('place');
+            console.log(locations)
+            res.status(200).json(locations);
         } catch (error) {
-          console.error(error);
-          res.status(500).json({ error: 'Failed to fetch locations' });
+            console.error(error);
+            res.status(500).json({ error: 'Failed to fetch locations' });
         }
-      },
+    },
 
 }
 

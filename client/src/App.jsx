@@ -23,6 +23,7 @@ import MoviePage from "./Pages/User/Home/MoviePage"
 import TheatreSelect from "./Pages/User/BookingPage/BookingPage"
 import SeatSelector from "./Pages/User/SeatSelector/seatSelector";
 import Checkout from "./Components/User/Booking/checkOut";
+import Profile from "./Pages/User/Profile/Profile"
 
 
 
@@ -75,6 +76,7 @@ function App() {
         <Route path="/signup" element={<Signupuser />} />
         <Route path="/forgotpassword" element={<Forgotpassword />} />
         <Route path="/" element={<Home />} />
+        <Route path={"/profile"} element={<Profile/>} />
         <Route path={"/movie/:id"} element={<MoviePage />} />
         <Route path={"/SelectTheater/:MovieId"} element={<TheatreSelect/>} />
         <Route path={"/movieseat"}  element={<SeatSelector/>}/>

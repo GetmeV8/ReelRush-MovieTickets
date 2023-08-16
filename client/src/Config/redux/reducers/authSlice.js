@@ -17,12 +17,13 @@ const authSlice = createSlice({
     logoutUser: (state) => {
       state.authTokens = null
       state.user = null
-      localStorage.removeItem("authToken")
+      localStorage.removeItem("authTokens")
     }
   }
 })
 
 
 export const {setUserTokens, logoutUser} = authSlice.actions
+export const selectUser = (state)=> state.user
 
 export default authSlice.reducer
