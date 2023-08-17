@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Payment(props) {
   const [amount, setAmount] = useState(props.amount);
-  const [bookingid,setBookingid] =useState(props.bookingid)
+  const [bookingid, setBookingid] = useState(props.bookingid)
   const [order, setOrder] = useState(null);
   const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ function Payment(props) {
     } catch (error) {
       console.error(error);
     }
-};
+  };
 
   const onPay = () => {
     const options = {
@@ -28,14 +28,14 @@ function Payment(props) {
       image: 'https://play-lh.googleusercontent.com/I8M0mhb7fcRfTi22XzLfeFeIcj3tiKMCQNH4YFPjqkQA8mEakWuaQrDKELo0ISuTZg',
       order_id: order.id,
       handler: function (response) {
-        
-        userAxios.post('/confirmPayment',{
-            ...response,
-            bookingid
-        }).then((resp)=>{
-            navigate("/");
+
+        userAxios.post('/confirmPayment', {
+          ...response,
+          bookingid
+        }).then((resp) => {
+          navigate("/ticket");
         })
-        
+
         // alert(response.razorpay_payment_id);
         // alert(response.razorpay_order_id);
         // alert(response.razorpay_signature);
@@ -59,12 +59,12 @@ function Payment(props) {
 
   return (
     <div className="App">
-      
+
       <div className="App-content">
         <div className="Amount-form">
-     <button id='generatepayment' className="border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-gray-800 hover:text-white text-white  flex flex-row justify-center items-center space-x-2 py-4 rounded w-full" onClick={()=>{
-         createOrder()
-     }} >Generate Payment</button>
+          <button id='generatepayment' className="border border-transparent hover:border-gray-300 bg-gray-900 hover:bg-gray-800 hover:text-white text-white  flex flex-row justify-center items-center space-x-2 py-4 rounded w-full" onClick={() => {
+            createOrder()
+          }} >Generate Payment</button>
         </div>
         {order && (
           <div className="Payment-form">
