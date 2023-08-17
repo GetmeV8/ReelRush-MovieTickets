@@ -16,7 +16,6 @@ const ForgotPassword = () => {
         if (phoneNumber) {
             try {
                 const appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-                console.log("VERIFYYYYYYY",appVerifier)
                 const confirmationResult = await firebase
                     .auth()
                     .signInWithPhoneNumber(phoneNumber, appVerifier);
