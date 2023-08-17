@@ -68,6 +68,7 @@ import {
 } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import api from "../../../Assets/Interceptors/userInterface"
+import SideBar from "../../../Components/User/SideBar/sideBar";
 
 
 const Profile = () => {
@@ -104,7 +105,8 @@ const Profile = () => {
 
   return (
     <>
-      <Box width={"100%"} display="flex">
+    <SideBar></SideBar>
+      {/* <Box width={"100%"} display="flex">
         {" "}
         {user && (
           <Box
@@ -191,7 +193,7 @@ const Profile = () => {
             </Box>
           </Box>
         )}
-      </Box>
+      </Box> */}
     </>
   );
 };

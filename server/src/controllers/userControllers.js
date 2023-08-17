@@ -170,7 +170,8 @@ module.exports = {
             }
 
             // Now fetch booking history based on user's email
-            const bookingHistory = await bookingModel.find({ 'user.email': userDetails.user.email });
+            const bookingHistory = await bookingModel.find({ 'user.email': userDetails.email });
+            console.log(bookingHistory)
 
             res.json({ userDetails, bookingHistory });
         } catch (error) {

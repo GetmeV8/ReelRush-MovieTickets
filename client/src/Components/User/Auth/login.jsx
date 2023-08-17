@@ -96,7 +96,7 @@ function Login() {
                             <div className="text-red-500">{formik.errors.password}</div>
                         )}
 
-                        <button type="submit" className="btn btn-primary mb-4">
+                        <button type="submit" className="btn btn-primary mb-4 bg-red-600">
                             LOGIN
                         </button>
 
