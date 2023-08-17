@@ -28,11 +28,6 @@ const NavItems = [
         icon: <FaTicketAlt className='h-6 w-6' />
     },
     {
-        path: "/dashboard/my-profile",
-        name: "Payment Refunds",
-        icon: <MdPayment className='h-6 w-6' />
-    },
-    {
         path: "/dashboard/settings",
         name: "Settings",
         icon: <FiSettings className='h-6 w-6' />

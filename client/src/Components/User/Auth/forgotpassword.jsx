@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import "firebase/auth"
 
@@ -8,6 +8,7 @@ const ForgotPassword = () => {
     const [otp, setOTP] = useState("");
     const [showOTPInput, setShowOTPInput] = useState(false);
     const [confirmationResult, setConfirmationResult] = useState(null);
+    const navigate = useNavigate()
 
 
 
@@ -38,6 +39,9 @@ const ForgotPassword = () => {
             const credential = await confirmationResult.confirm(otp);
             // Use the credential for further operations (e.g., password reset)
             console.log("OTP verified:", credential);
+
+              // Redirect to the login page (home page)
+              navigate("/login"); // Replace "/login" with the actual path to your login page
         } catch (error) {
             console.error("Error verifying OTP:", error);
         }
