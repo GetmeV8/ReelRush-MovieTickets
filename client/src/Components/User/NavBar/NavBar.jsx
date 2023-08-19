@@ -71,13 +71,7 @@ const NavBar = () => {
 
           <ul className="flex space-x-4">
             <li className="px-4 py-2 truncate">About</li>
-            {/* <li className="px-4 py-2 relative">
-              <Link to="/profile">
-                <button className="cursor-pointer focus:outline-none">
-                  <span className="text-white">Profile</span>
-                </button>
-              </Link>
-            </li> */}
+            
             {access && (
               <li className="px-4 py-2 relative">
                 <Link to="/profile">
