@@ -46,7 +46,7 @@ const TheaterLogin = () => {
         const url = loginPost;
         const { data } = await axios.post(url, values);
         dispatch(setLogin({ theater: data.theater, token: data.token }));
-		navigate("/");
+		navigate("/theater");
   
       } catch (error) {
         if (
@@ -92,7 +92,7 @@ const TheaterLogin = () => {
             </button>
           </form>
           <span className={styles.signupSpan}>
-            Don't have an account? <Link to="/signup">Signup</Link>
+            Don't have an account? <Link to="/theater/theatersignup">Signup</Link>
           </span>
         </div>
         <div className={styles.right}>

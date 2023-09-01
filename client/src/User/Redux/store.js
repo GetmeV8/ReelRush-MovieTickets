@@ -9,13 +9,13 @@ const initialState = {
   selectedMovie: null,
   setBookedDetails: null,
   getSeatInformation: null,
-  wishlist: [],
+  wishlist:[],
   isloading: false,
 };
 
 export const authSlice = createSlice({
   name: "auth",
-  initialState,
+  initialState, 
   reducers: {
     setMode: (state) => {
       state.mode = state.mode === "light" ? "dark" : "light";
@@ -28,16 +28,16 @@ export const authSlice = createSlice({
         state.wishlist = user.wishlist;
       }
     },
-
+    
     setLogout: (state) => {
       state.user = null;
       state.token = null;
     },
-
+   
     setToken: (state, action) => {
       state.token = action.payload.token;
     },
-
+   
     setPosts: (state, action) => {
       state.posts = action.payload.posts;
     },
@@ -63,7 +63,7 @@ export const authSlice = createSlice({
     setTempemail: (state, action) => {
       state.tempemail = action.payload.tempemail;
     },
-    setDates: (state, action) => {
+    setDates:(state, action) => {
       state.date = action.payload.date;
     },
     handleSelectDate: (state, action) => {
@@ -79,12 +79,6 @@ export const authSlice = createSlice({
     hideLoading: (state) => {
       state.isloading = false;
     },
-    setGenre: (state, action) => {
-      state.genre = action.payload.genre;
-    },
-    setTheater: (state, action) => {
-      state.theater = action.payload.theater;
-    }
   },
 });
 
@@ -102,11 +96,9 @@ export const {
   setOtp,
   setTempemail,
   setDates,
-  setGenre,
   handleSelectDate,
   setWishlist,
   showLoading,
   hideLoading,
-  setTheater,
 } = authSlice.actions;
 export default authSlice.reducer;
