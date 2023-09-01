@@ -1,0 +1,16 @@
+node_modules/
+
+npm-debug.log
+yarn-error.log
+
+# Backend
+/server/node_modules/
+/server/build/
+
+# Frontend
+/client/node_modules/
+/client/build/
+
+# Environment variables
+.env
+.db
