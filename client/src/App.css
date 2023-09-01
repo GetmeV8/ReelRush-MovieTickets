@@ -1,0 +1,22 @@
+html {
+  overflow-y: scroll;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+body {
+  margin: 0; /* Remove default body margin */
+  padding-right: 0px; /* Adjust this value based on the scroll bar width */
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+body::-webkit-scrollbar {
+  width: 0.5em; /* Adjust this value based on the scroll bar width */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}

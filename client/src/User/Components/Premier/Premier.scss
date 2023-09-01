@@ -1,0 +1,165 @@
+.flex {
+    display: flex;
+  }
+  
+  .box-border {
+    box-sizing: border-box;
+  }
+  
+  .flex-col {
+    flex-direction: column;
+  }
+  
+  .mt-36 {
+    margin-top: 9rem;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+ 
+  
+  .bg-gray-800 {
+    background-color: #87ace0;
+  }
+  
+  .mb-20 {
+    margin-bottom: 5rem;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+  
+  .p-7 {
+    padding: 1.75rem;
+  }
+  
+  
+  
+  .text-white {
+    color: #fff;
+  }
+  
+  .text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .font-bold {
+    font-weight: 700;
+  }
+  
+  .text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  .bg-gray-200 {
+    background-color: #edf2f7;
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+ 
+  .grid {
+    display: grid;
+  }
+  
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  .sm\:grid-cols-2 {
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  .md\:grid-cols-3 {
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  
+  .lg\:grid-cols-5 {
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+  
+  .gap-4 {
+    gap: 1rem;
+  }
+  
+  .p-4 {
+    padding: 1rem;
+  }
+  
+  .justify-items-center {
+    justify-items: center;
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+  
+  .md\:w-full {
+    width: 100%;
+  }
+  
+  .bg-black {
+    background-color: #1b4752;
+  }
+  
+  .text-white {
+    color: #fff;
+  }
+  
+  .w-44 {
+    width: 11rem;
+  }
+  
+  .h-44 {
+    height: 11rem;
+  }
+  
+  .p-4 {
+    padding: 1rem;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .font-semibold {
+    font-weight: 600;
+  }
+  
+  .rounded-2xl {
+    border-radius: 1rem;
+  }
+  
+  .uppercase {
+    text-transform: uppercase;
+  }
+  
