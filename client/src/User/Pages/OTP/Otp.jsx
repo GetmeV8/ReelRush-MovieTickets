@@ -9,7 +9,7 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import React from "react";
-import { setOtp, setTempemail } from "../../../Redux/Store";
+import { setOtp, setTempemail } from "../../../User/Redux/store"  ;
 
 const validate = (values) => {
   const errors = {};

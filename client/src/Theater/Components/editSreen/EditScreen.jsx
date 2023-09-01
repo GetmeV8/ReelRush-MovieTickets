@@ -14,7 +14,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
-import { setTheater } from "../../../Redux/Store";
+import { setTheater } from "../../../Theater/Redux/store";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,

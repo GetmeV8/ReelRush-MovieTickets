@@ -10,7 +10,7 @@ import Navbar from "../../Components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { applicationPost, getOneTheater } from "../../../utils/Constants";
 import { useSelector, useDispatch } from "react-redux";
-import { setTheater } from "../../../Redux/Store";
+import { setTheater } from "../../../Theater/Redux/store";
 
 import { useEffect } from "react";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";

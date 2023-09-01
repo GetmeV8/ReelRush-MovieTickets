@@ -1,13 +1,12 @@
 import { useState } from "react";
 import axios from "../../utils/axios";
 import styles from "./styles.module.scss";
-import { setUser } from "../../Redux/store";
-import { setToken } from "../../Redux/store";
+import { setUser,setToken } from "../../../User/Redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import {useNavigate } from "react-router-dom";
 import OTPInput from "otp-input-react";
 import { ToastContainer, toast } from "react-toastify";
-import { otplogin } from "../../utils/Constants";
+import { otplogin } from "../../../utils/Constants";
 
 
 const OtpPage = () => {

@@ -7,7 +7,7 @@ import axios from "../../../utils/axios";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Rating from "../../Components/Rating/Rating";
 import ReviewModel from "../../Components/Review/Review";
-import { setMovies, setWishlist,setLogin } from "../../../Redux/Store";
+import { setMovies, setWishlist,setLogin } from "../../../User/Redux/store";
 import { useSelector,useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
 import ShowReview from "../../Components/Review/showReview";
@@ -16,7 +16,6 @@ import Swal from "sweetalert2";
 import { getAllReview, getMovie,addWishlist,removeWishlist } from "../../../utils/Constants";
 import { toast, ToastContainer } from "react-toastify";
 import IconButton from "@mui/material/IconButton";
-import Favorite from "@mui/icons-material/Favorite";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 const Moviedetails = () => {

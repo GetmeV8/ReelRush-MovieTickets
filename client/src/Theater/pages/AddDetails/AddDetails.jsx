@@ -14,7 +14,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { getMovies } from "../../../utils/Constants";
 import { useCallback } from "react";
-import { setTheater } from "../../../Redux/Store";
+import { setTheater } from "../../../Theater/Redux/store";
 import { toast, ToastContainer } from "react-toastify";
 import Selects from "react-select";
 

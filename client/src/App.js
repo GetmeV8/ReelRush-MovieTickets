@@ -46,9 +46,9 @@ import Chat from "./Admin/pages/Chat/Chat";
 
 
 //Theater Imports
-import TheaterLogin from './Theater/pages/Login/Login';
-import TheaterSignup from './Theater/pages/Signup/Signup';
-import TheaterHome from './Theater/pages/Home/Home';
+import TheaterLogin from './Theater/pages/Login/TheaterLogin';
+import TheaterSignup from './Theater/pages/Signup/TheaterSignup';
+import TheaterHome from './Theater/pages/Home/TheaterHome';
 import TheaterNew from "./Theater/pages/TheaterApplication/New";
 import ApplicationEdit from "./Theater/Components/ApplicationEdit/ApplicationEdit";
 import Screen from "./Theater/pages/Screen/Screen";
@@ -69,7 +69,7 @@ import TheaterChat from "./Theater/pages/Chat/Chat";
 import PageNotFound from "./PageNotFound"
 import socket from "./socket.io/socket";
 import Loading from "./Components/Loading/loading";
-import { setLogout } from "./Redux/Store";
+import { setLogout } from "./User/Redux/store";
 import AdminLayout from "./Admin/components/layouts/AdminLayout";
 import TheaterLayout from "./Theater/Components/layout/theaterLayout";
 

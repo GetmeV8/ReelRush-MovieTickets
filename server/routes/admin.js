@@ -52,7 +52,7 @@ router.delete("/deleteMovie/:id", verifyToken, deleteMovie);
 router.post("/editMovie/:id",verifyToken, editMovie);
 router.get("/getMovie/:id",verifyToken, getMovie);
 router.post("/addPoster",verifyToken, addPoster); 
-router.get("/getAllPoster",verifyToken, getAllPoster);
+router.get("/getAllPoster", getAllPoster);
 router.delete("/deletePoster/:id", verifyToken, deletePoster); 
 router.get("/getOneTheater/:id", getOneTheater);
 router.patch("/approveTheater/:id",verifyToken, approve); 

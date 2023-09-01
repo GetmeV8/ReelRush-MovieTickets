@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Navbar.scss";
 import { useDispatch } from "react-redux";
-import { setLogout, setSearchKey} from "../../../Redux/Store";
+import { setLogout, setSearchKey} from "../../../User/Redux/store";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";

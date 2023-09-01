@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import Year from "../../Components/chart/Year/Year";
 import Weekly from "../../Components/chart/Weekly/Weekly";
 import Month from "../../Components/chart/Monthly/Month";
-const Home = () => {
+const TheaterHome = () => {
   return (
     <div className="home">
       <Sidebar />
@@ -38,5 +38,5 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default TheaterHome;
 

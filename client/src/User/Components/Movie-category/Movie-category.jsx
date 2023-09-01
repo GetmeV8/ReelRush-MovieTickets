@@ -7,7 +7,7 @@ import { addWishlist,removeWishlist,categorymovie } from "../../../utils/Constan
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setMovies,setLogin } from "../../../Redux/Store";
+import { setMovies,setLogin } from "../../../User/Redux/store";
 import { toast, ToastContainer } from "react-toastify";
 import { useParams } from 'react-router-dom';
 import {

@@ -7,7 +7,7 @@ import { usergetMovies, addWishlist,removeWishlist } from "../../../utils/Consta
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setMovies, setWishlist,setLogin,hideLoading,showLoading } from "../../../Redux/Store";
+import { setMovies, setWishlist,setLogin,hideLoading,showLoading } from "../../../User/Redux/store";
 import { toast, ToastContainer } from "react-toastify";
 import IconButton from "@mui/material/IconButton";
 import Favorite from "@mui/icons-material/Favorite";

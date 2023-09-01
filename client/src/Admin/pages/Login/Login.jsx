@@ -3,7 +3,7 @@ import axios from "../../../utils/axios";
 import {useNavigate } from "react-router-dom";
 import styles from './styles.module.scss'
 import { loginPostAdmin } from "../../../utils/Constants";
-import { setLogin } from "../../../Redux/Store";
+import { setLogin } from "../../../Admin/Redux/store";
 import { useDispatch } from "react-redux";
 
 const AdminLogin = () => {

@@ -19,7 +19,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { getMovies } from "../../../utils/Constants";
 import { useCallback } from "react";
-import { setTheater } from "../../../Redux/Store";
+import { setTheater } from "../../../Theater/Redux/store";
 import Selects from "react-select";
 
 const AddScreen = () => {

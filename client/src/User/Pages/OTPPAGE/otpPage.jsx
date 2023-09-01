@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import OTPInput from "otp-input-react";
 import { ToastContainer, toast } from "react-toastify";
 import { otplogin,loginOtp } from "../../../utils/Constants";
-import { setOtp, setTempemail,setUser,setToken } from "../../../Redux/Store";
+import { setOtp, setTempemail,setUser,setToken } from "../../../User/Redux/store";
 const OtpPage = () => {
   const navigate = useNavigate();
   const [typeOtp, setTypeOtp] = useState("");
