@@ -69,23 +69,43 @@ import TheaterChat from "./Theater/pages/Chat/Chat";
 import PageNotFound from "./PageNotFound"
 import socket from "./socket.io/socket";
 import Loading from "./Components/Loading/loading";
-import {store , persistor} from "./state/store";
 import { setLogout } from "./state/admin/adminSlice";
 import AdminLayout from "./Admin/components/layouts/AdminLayout";
 import TheaterLayout from "./Theater/Components/layout/theaterLayout";
+import { RootState } from "./state/rootstate";
+
+
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
-  const token = useSelector((state) => state.token);
+  const userToken = useSelector((state) => state?.user?.token);
+  const AdminToken = useSelector((state) => state?.admin?.token);
+  const TheaterToken = useSelector((state) => state?.theater?.token);
   const isloading = useSelector((state) => state.isloading);
   const currentUser = useSelector((state) => state.currentUser);
   const dispatch = useDispatch();
 
-  const ProtectedRoute = ({ children }) => {
-    if (!token) {
+  const ProtectedAdminRoute = ({ children, AdminToken }) => {
+    if (!AdminToken) {
       return <Navigate to="/adminlogin" />;
     }
-
+  
+    return children;
+  };
+  
+  const ProtectedUserRoute = ({ children, userToken }) => {
+    if (!userToken) {
+      return <Navigate to="/login" />;
+    }
+  
+    return children;
+  };
+  
+  const ProtectedTheaterRoute = ({ children, theaterToken }) => {
+    if (!theaterToken) {
+      return <Navigate to="/theaterlogin" />;
+    }
+  
     return children;
   };
 
@@ -107,7 +127,7 @@ function App() {
 
 
         <Routes>
-          <Route path="/login" element={!token ? <Userlogin /> : <Navigate to="/" />} />
+          <Route path="/login" element={!userToken ? <Userlogin /> : <Navigate to="/" />} />
           <Route path="/">
             <Route index={true} element={<Userhome />} />
             <Route path="/signup" exact element={<Usersignup />} />
@@ -120,15 +140,15 @@ function App() {
             <Route path="/MovieDetails/:id" element={<Moviedetails />} />
             <Route path="/" element={<Navigate replace to="/login" />} />
             <Route path={"/categorymovie/:category"} element={<Category />} />
-            <Route path="/BokingDetails/:id" element={!token ? <Userlogin /> : <UserBookings />} />
+            <Route path="/BokingDetails/:id" element={!userToken ? <Userlogin /> : <UserBookings />} />
             <Route path="/booktickets/seats" element={<Seating />} />
             <Route path="/booktickets/summary" element={<SummaryPage />} />
             <Route path="/booking" element={<Ticket />} />
           </Route>
 
 
-          <Route path="/adminlogin" element={!token ? <AdminLogin /> : <Navigate to="/admin" />} />
-          <Route path="/admin" element={token ? <AdminLayout /> : <Navigate to="/Adminlogin" />}>
+          <Route path="/adminlogin" element={!AdminToken ? <AdminLogin /> : <Navigate to="/admin" />} />
+          <Route path="/admin" element={AdminToken ? <AdminLayout /> : <Navigate to="/Adminlogin" />}>
             <Route index={true} element={<Home />} />
             <Route path="users-list" element={<Single />} />
             <Route path="addMovies" element={<New />} />
@@ -150,9 +170,9 @@ function App() {
           </Route>
 
 
-          <Route path="/theaterlogin" element={!token ? <TheaterLogin /> : <Navigate to="/theater" />} />
-          <Route path="theatersignup" element={!token ? <TheaterSignup /> : <Navigate to="/theaterlogin" />} />
-          <Route path="/theater" element={token ? <TheaterLayout /> : <Navigate to="/theaterlogin" />}>
+          <Route path="/theaterlogin" element={!TheaterToken ? <TheaterLogin /> : <Navigate to="/theater" />} />
+          <Route path="theatersignup" element={!TheaterToken ? <TheaterSignup /> : <Navigate to="/theaterlogin" />} />
+          <Route path="/theater" element={TheaterToken ? <TheaterLayout /> : <Navigate to="/theaterlogin" />}>
             <Route index={true} element={<TheaterHome />} />
             <Route path="application" element={<TheaterNew />} />
             <Route path="EditApplication" element={<ApplicationEdit />} />

@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const theaterSlice = createSlice({
-  name: "auth",
+  name: "theater",
   initialState,
   reducers: {
     setMode: (state) => {

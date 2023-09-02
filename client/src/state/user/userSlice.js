@@ -9,13 +9,13 @@ const initialState = {
   selectedMovie: null,
   setBookedDetails: null,
   getSeatInformation: null,
-  wishlist:[],
+  wishlist: [],
   isloading: false,
 };
 
 export const userSlice = createSlice({
-  name: "auth",
-  initialState, 
+  name: "user",
+  initialState,
   reducers: {
     setMode: (state) => {
       state.mode = state.mode === "light" ? "dark" : "light";
@@ -28,16 +28,16 @@ export const userSlice = createSlice({
         state.wishlist = user.wishlist;
       }
     },
-    
+
     setLogout: (state) => {
       state.user = null;
       state.token = null;
     },
-   
+
     setToken: (state, action) => {
       state.token = action.payload.token;
     },
-   
+
     setPosts: (state, action) => {
       state.posts = action.payload.posts;
     },
@@ -63,7 +63,7 @@ export const userSlice = createSlice({
     setTempemail: (state, action) => {
       state.tempemail = action.payload.tempemail;
     },
-    setDates:(state, action) => {
+    setDates: (state, action) => {
       state.date = action.payload.date;
     },
     handleSelectDate: (state, action) => {

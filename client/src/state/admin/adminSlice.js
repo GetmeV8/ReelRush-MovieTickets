@@ -10,7 +10,7 @@ const initialState = {
 };
 
 export const adminSlice = createSlice({
-    name: "auth",
+    name: "admin",
     initialState,
     reducers: {
         setMode: (state) => {
