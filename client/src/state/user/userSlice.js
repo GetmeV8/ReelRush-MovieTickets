@@ -100,5 +100,5 @@ export const {
   setWishlist,
   showLoading,
   hideLoading,
-} = authSlice.actions;
+} = userSlice.actions;
 export default userSlice.reducer;

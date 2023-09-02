@@ -3,7 +3,7 @@ import axios from "../../utils/axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 import {  googleSignup,userloginPost } from "../../../utils/Constants";
-import { setLogin,setWishlist } from "../../../User/Redux/store";
+import { setLogin,setWishlist } from "../../../state/user/userSlice";
 import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 import React from "react";

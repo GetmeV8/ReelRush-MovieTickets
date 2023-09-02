@@ -55,6 +55,6 @@ export const { setMode,
     setPosts,
     setToken,
     setGenre } =
-    authSlice.actions;
+    adminSlice.actions;
     
 export default adminSlice.reducer;

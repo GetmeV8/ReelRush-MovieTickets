@@ -66,10 +66,11 @@ import TheaterChat from "./Theater/pages/Chat/Chat";
 
 
 //common imports
-import PageNotFound from "./PageNotFound";
+import PageNotFound from "./PageNotFound"
 import socket from "./socket.io/socket";
 import Loading from "./Components/Loading/loading";
-import { setLogout } from "./User/Redux/store";
+import {store , persistor} from "./state/store";
+import { setLogout } from "./state/admin/adminSlice";
 import AdminLayout from "./Admin/components/layouts/AdminLayout";
 import TheaterLayout from "./Theater/Components/layout/theaterLayout";
 

@@ -1,16 +1,15 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Navbar.scss";
 import { useDispatch } from "react-redux";
-import { setLogout, setSearchKey} from "../../../User/Redux/store";
+import { setLogout, setSearchKey } from "../../../state/user/userSlice";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
 import axios from "../../../utils/axios";
 import {
   getAllCitys,
@@ -34,7 +33,7 @@ const Search = styled("div")(({ theme }) => ({
   },
   marginLeft: 0,
   width: "100%",
-  height:"50px",
+  height: "50px",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
     width: "auto",
@@ -181,12 +180,12 @@ const Header = () => {
           dispatch(setLogout());
         }
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }
 
   const navigate = useNavigate();
 
-  useEffect(() => {}, [searchKey]);
+  useEffect(() => { }, [searchKey]);
   let ss = { sso: "jdjd" };
 
   dispatch(setSearchKey({ searchKey: searchKey.toUpperCase() }));

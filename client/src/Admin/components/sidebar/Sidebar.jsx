@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../../Context/darkModeContext";
 import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setLogout } from "../../../Admin/Redux/store";
+import { setLogout } from "../../../state/admin/adminSlice";
 import BookOnlineIcon from "@mui/icons-material/BookOnline";
 import ChatIcon from "@mui/icons-material/Chat";
 import Badge from "@mui/material/Badge";

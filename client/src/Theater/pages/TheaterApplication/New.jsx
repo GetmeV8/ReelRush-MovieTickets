@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useCallback ,useEffect } from "react";
 import "./new.scss";
 import { useForm } from "react-hook-form";
 import axios from "../../../utils/axios";
@@ -10,11 +10,8 @@ import Navbar from "../../Components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { applicationPost, getOneTheater } from "../../../utils/Constants";
 import { useSelector, useDispatch } from "react-redux";
-import { setTheater } from "../../../Theater/Redux/store";
-
-import { useEffect } from "react";
+import { setTheater } from "../../../state/theater/theaterSlice";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import { useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 const New = () => {
   const theater = useSelector((state) => state.theater);

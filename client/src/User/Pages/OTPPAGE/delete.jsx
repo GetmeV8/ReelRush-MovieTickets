@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "../../utils/axios";
 import styles from "./styles.module.scss";
-import { setUser,setToken } from "../../../User/Redux/store";
+import { setUser,setToken } from "../../../state/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {useNavigate } from "react-router-dom";
 import OTPInput from "otp-input-react";

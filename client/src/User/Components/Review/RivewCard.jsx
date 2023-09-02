@@ -5,8 +5,7 @@ import CommentIcon from "@mui/icons-material/Comment";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FlagIcon from "@mui/icons-material/Flag";
 import Badge from "@mui/material/Badge";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 function ReviewCard({ review, currentUser, handleDeleteReview, movieDetails }) {
   const dispatch = useDispatch();

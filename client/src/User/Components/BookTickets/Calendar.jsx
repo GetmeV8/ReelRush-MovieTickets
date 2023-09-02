@@ -3,7 +3,7 @@ import moment from "moment";
 import Carousel from "react-multi-carousel";
 import styles from "../Styling/Cinemas.module.scss";
 import { useDispatch } from "react-redux";
-import { setDates } from "../../../User/Redux/store";
+import { setDates } from "../../../state/user/userSlice";
 
 export const Calendar = () => {
   const dispatch = useDispatch();

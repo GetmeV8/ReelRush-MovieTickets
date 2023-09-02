@@ -7,7 +7,7 @@ import axios from "../../../utils/axios";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Rating from "../../Components/Rating/Rating";
 import ReviewModel from "../../Components/Review/Review";
-import { setMovies, setWishlist,setLogin } from "../../../User/Redux/store";
+import { setMovies, setWishlist,setLogin } from "../../../state/user/userSlice";
 import { useSelector,useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
 import ShowReview from "../../Components/Review/showReview";

@@ -7,7 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useSelector, useDispatch } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import { setUser } from "../../../User/Redux/store";
+import { setUser } from "../../../state/user/userSlice";
 import { profileEditPost } from "../../utils/Constants";
 
 const Profileedit = () => {

@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 import axios from "../../utils/axios";
 import { seatReserved } from "../../../utils/Constants";
 import { toast, ToastContainer } from "react-toastify";
-import { hideLoading, showLoading } from "../../../User/Redux/store";
+import { hideLoading, showLoading } from "../../../state/user/userSlice";
 const Silver = ["A", "B", "C", "D", "E", "F", "G", "H"];
 const ticketList = {
   silver: [],

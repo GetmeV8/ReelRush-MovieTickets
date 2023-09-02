@@ -22,7 +22,7 @@ import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../../Context/darkModeContext";
 import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setLogout } from "../../../Theater/Redux/store";
+import { setLogout } from "../../../state/theater/theaterSlice";
 import { Button } from "@mui/material";
 import Swal from "sweetalert2";
 import Tooltip from "@mui/material/Tooltip";

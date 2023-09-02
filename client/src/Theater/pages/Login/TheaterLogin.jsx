@@ -3,7 +3,7 @@ import axios from "../../../utils/axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 import { loginPost } from "../../../utils/Constants";
-import { setLogin } from "../../../Theater/Redux/store";
+import { setLogin } from "../../../state/theater/theaterSlice";
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import { Toaster } from "react-hot-toast";

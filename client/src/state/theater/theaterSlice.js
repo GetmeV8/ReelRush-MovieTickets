@@ -53,5 +53,5 @@ export const {
   setTheater,
   setMessages,
   setCount,
-} = authSlice.actions;
+} = theaterSlice.actions;
 export default theaterSlice.reducer;

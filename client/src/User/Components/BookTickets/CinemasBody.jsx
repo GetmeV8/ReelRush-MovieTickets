@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useCallback } from "react";
 import CircleIcon from "@mui/icons-material/Circle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
@@ -6,7 +6,6 @@ import SendToMobileIcon from "@mui/icons-material/SendToMobile";
 import styles from "../Styling/Cinemas.module.scss";
 import axios from "../../utils/axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { experimentalStyled as styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
