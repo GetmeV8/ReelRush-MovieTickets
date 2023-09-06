@@ -13,7 +13,7 @@ const UserBookings = () => {
     "https://t3.ftcdn.net/jpg/03/17/79/66/360_F_317796693_B5yF8ybwUMb3MDhe6QQWGJKQYYNHfxKg.jpg";
 
   return (
-    <div style={{ backgroundColor: "rgb(87,168,204)", paddingBottom: 20 }}>
+    <div style={{ backgroundColor: "", paddingBottom: 20 }}>
       <Navbar />
       <div
         className="bannner"

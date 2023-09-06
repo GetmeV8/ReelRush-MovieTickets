@@ -14,7 +14,7 @@ const Userhome = () => {
       </div>
       <div
         className=""
-        style={{ backgroundColor: "RGB(87 168 204)", paddingTop: "70px" }}
+        style={{ backgroundColor: "black", paddingTop: "70px" }}
       >
         <h1 style={{ color: "white", paddingLeft: "100px" }}>
           EXPLORE NEW MOVIES

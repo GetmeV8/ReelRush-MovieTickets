@@ -42,23 +42,15 @@ export default function SummaryPage() {
     ticketList,
     movieId,
   };
-  console.log(
-    time,
-    theaterId,
-    screenname,
-    theatername,
-    movieName,
-    "okkkkkkkkkkkkkkkkkkkkkkkk"
-  );
 
   return (
     <div>
       <Navbar />
-      <div style={{ height: "800px", backgroundColor: "rgb(87,168,204)" }}>
+      <div style={{ height: "800px", backgroundColor: "black" }}>
         <div className={styles.container}>
           <img
             style={{ width: "600px" }}
-            src="https://media.gettyimages.com/id/157372958/photo/empty-movie-theater.jpg?s=612x612&w=gi&k=20&c=6bYRSXcNc-2oWFXqs2wVGZZhSpmtq7ZGWD4LV-fa56A="
+            src="https://thumbs.dreamstime.com/b/movie-theme-illustration-17004949.jpg"
             alt=""
           />
 

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="footer" style={{ backgroundColor: "rgb(87,168,204)" }}>
+    <div className="footer" style={{ backgroundColor: "black" }}>
       <div className="footer__content container">
         <div className="footer__content__logo">
           <div className="logo">
@@ -15,20 +15,23 @@ const Footer = () => {
         </div>
         <div className="footer__content__menus">
           <div className="footer__content__menu">
+
             <Link style={{ textDecoration: "none", color: "rgb(243,241,241)" }} to="/">
               Home
             </Link>
             <Link style={{ textDecoration: "none", color: "rgb(243,241,241)" }} to="/">
-              Contact us
+              Contact Us
             </Link>
             <Link style={{ textDecoration: "none", color: "rgb(243,241,241)" }} to="/">
-              Term of services
+              Term of Services
             </Link>
             <Link style={{ textDecoration: "none", color: "rgb(243,241,241)" }} to="/">
-              About us
+              About Us
             </Link>
+
           </div>
           <div className="footer__content__menu">
+
             <Link style={{ textDecoration: "none", color: "rgb(243,241,241)" }} to="/">
               Live
             </Link>
@@ -39,7 +42,7 @@ const Footer = () => {
               Premium
             </Link>
             <Link style={{ textDecoration: "none", color: "rgb(243,241,241)" }} to="/">
-              Pravacy policy
+              Privacy policy
             </Link>
           </div>
           <div className="footer__content__menu">

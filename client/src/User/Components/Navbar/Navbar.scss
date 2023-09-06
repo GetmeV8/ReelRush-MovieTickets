@@ -20,6 +20,8 @@
 
 .header {
     height: $header-height;
+    font-family: sans-serif;
+    font-weight: 100;
     position: fixed;
     top: 0;
     left: 0;
@@ -31,7 +33,7 @@
 
     &.shrink {
         height: $header-shrink-height;
-        background-color: RGB(87 168 204);
+        background-color: black;
     }
 
     &__wrap {
@@ -95,22 +97,20 @@
             }
         }
     }label{
-        color: white;
-        font-size: 1.2rem;
+        color: rgb(255, 255, 255);
+        font-size: 1.0rem;
         // font-weight: 100;
     }
     .loca{
-        color: white;
+        color: rgb(223, 15, 15);
 
     }#combo-box-demo{
         color: white;
 
-        
-
     }.username{
         color: white;
-        font-weight: 700;
-        font-size: 1.5rem;
+        font-weight: 500;
+        font-size: 1.0rem;
     }
      
        

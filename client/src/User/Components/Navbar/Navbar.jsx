@@ -267,7 +267,7 @@ const Header = () => {
       <div className="header__wrap container">
         <div className="logo">
           <Link style={{ textDecoration: "none", color: "white" }} to="/">
-            Reel <span style={{ color: "rgb(30,29,34)" }}>Rush</span>
+            Reel <span style={{ color: "white" }}>Rush</span>
           </Link>
         </div>
         <ul className="header__nav">
@@ -355,7 +355,6 @@ const Header = () => {
               </MenuItem>
             </Menu>
           </div>
-
           {user ? (
             <Button onClick={handleLogout} variant="contained" color="error">
               {" "}
@@ -368,7 +367,7 @@ const Header = () => {
               style={{ textDecoration: "none", color: "white" }}
               to="/login"
             >
-              <h2>Signup</h2>
+              <h2>Sign-Up</h2>
             </Link>
           )}
         </ul>

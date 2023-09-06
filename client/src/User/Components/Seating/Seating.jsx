@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Seating.scss";
 import { rows } from "../data";
-import { useNavigate } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import { useLocation } from "react-router-dom";
 import axios from "../../utils/axios";
 import { seatReserved } from "../../../utils/Constants";
 import { toast, ToastContainer } from "react-toastify";
@@ -47,7 +46,7 @@ function Seating({
     toast.error(error, {
       position: "top-right",
     });
-    let seatNumbers = []; // Declare seatNumbers array outside the loop
+  let seatNumbers = []; // Declare seatNumbers array outside the loop
   useEffect(() => {
     async function getHistory() {
       try {
@@ -87,26 +86,26 @@ function Seating({
   }, []);
   console.log(check, "hhhhh")
   if (check.length) {
-    
 
-check.forEach(checkRow => {
-  const rowSeatNumbers = checkRow?.seats.map(seat => seat.id); // Create temporary array for each checkRow
-  console.log(rowSeatNumbers);
 
-  if (rowSeatNumbers.length >= 1) {
-    seatNumbers.push(...rowSeatNumbers); // Add rowSeatNumbers to seatNumbers array
-  }
-});
+    check.forEach(checkRow => {
+      const rowSeatNumbers = checkRow?.seats.map(seat => seat.id); // Create temporary array for each checkRow
+      console.log(rowSeatNumbers);
+
+      if (rowSeatNumbers.length >= 1) {
+        seatNumbers.push(...rowSeatNumbers); // Add rowSeatNumbers to seatNumbers array
+      }
+    });
     // check.forEach(checkRow=>{
     //   const seatNumbers = checkRow?.seats.map((seat) => seat.id);
     //   console.log(seatNumbers)
 
-      if (seatNumbers.length >= 1) {
-        rowsData.forEach((obj) => {
-          const isReserved = seatNumbers.includes(obj.id);
-          obj.isReserved = isReserved;
-        });
-      }
+    if (seatNumbers.length >= 1) {
+      rowsData.forEach((obj) => {
+        const isReserved = seatNumbers.includes(obj.id);
+        obj.isReserved = isReserved;
+      });
+    }
     // })
   }
 
@@ -175,11 +174,11 @@ check.forEach(checkRow => {
           <span>{date}</span>
           <span style={{ paddingLeft: "20px" }}>{time}</span>
           <span style={{ paddingLeft: "20px" }}>{theatername}</span>
-          <span style={{ paddingLeft: "20px" }}>{screenname}</span>
+          {/* <span style={{ paddingLeft: "20px" }}>{screenname}</span> */}
           <span style={{ paddingLeft: "20px" }}>{ticketPrice}</span>
           <span style={{ paddingLeft: "20px" }}>{movieName}</span>
-          <span style={{ paddingLeft: "20px" }}>{theaterId}</span>
-          <span style={{ paddingLeft: "20px" }}>{movieId}</span>
+          {/* <span style={{ paddingLeft: "20px" }}>{theaterId}</span> */}
+          {/* <span style={{ paddingLeft: "20px" }}>{movieId}</span> */}
 
           <div className="seatingModal__seatContainer_can">
             <div style={{ display: "grid" }}>

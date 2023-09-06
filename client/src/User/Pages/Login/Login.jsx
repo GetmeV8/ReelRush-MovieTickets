@@ -120,7 +120,7 @@ const Userlogin = () => {
             onSubmit={formik.handleSubmit}
           >
             <h1>
-              LOGIN TO CINE <span style={{ color: "rgb(30,29,34)" }}>BOOK</span>
+              LOGIN TO Reel <span style={{ color: "white" }}>Rush</span>
             </h1>
             <br />
             <input
