@@ -1,9 +1,7 @@
 import "./list.scss";
 import { deletePoster, getAllPoster } from "../../../utils/Constants";
-import { useState } from "react";
-import { useEffect } from "react";
+import React ,{ useState , useEffect } from "react";
 import axios from "../../../utils/axios";
-import React from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -23,7 +21,7 @@ const PosterList = (props) => {
     });
   const navigate = useNavigate();
   const [poster, getPoster] = useState([]);
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin?.token);
   useEffect(() => {
     const getAllPosters = () => {
       axios

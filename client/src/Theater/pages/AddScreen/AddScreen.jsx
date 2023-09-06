@@ -24,9 +24,9 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 const AddScreen = () => {
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.theater?.token);
   const dispatch = useDispatch();
-  const theater = useSelector((state) => state.theater);
+  const theater = useSelector((state) => state.theater?.theater);
   const [screen, setScreen] = useState([]);
 
   useEffect(() => {

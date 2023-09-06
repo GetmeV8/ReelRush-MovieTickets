@@ -152,7 +152,7 @@ const getUnrededMessages = () => {
   return (
     <div className="sidebar">
     <div className="top">
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to="/theater" style={{ textDecoration: "none" }}>
         <span className="logo">THEATER</span>
       </Link>
     </div>
@@ -251,7 +251,7 @@ const getUnrededMessages = () => {
     </div>
     <br />
     <br />
-    <div className="bottom">
+    {/* <div className="bottom">
       <div
         className="colorOption"
         onClick={() => dispatch({ type: "LIGHT" })}
@@ -260,7 +260,7 @@ const getUnrededMessages = () => {
         className="colorOption"
         onClick={() => dispatch({ type: "DARK" })}
       ></div>
-    </div>
+    </div> */}
     <ToastContainer />
   </div>
 );

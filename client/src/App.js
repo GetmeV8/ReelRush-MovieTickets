@@ -89,23 +89,23 @@ function App() {
     if (!AdminToken) {
       return <Navigate to="/adminlogin" />;
     }
-  
+
     return children;
   };
-  
+
   const ProtectedUserRoute = ({ children, userToken }) => {
     if (!userToken) {
       return <Navigate to="/login" />;
     }
-  
+
     return children;
   };
-  
+
   const ProtectedTheaterRoute = ({ children, theaterToken }) => {
     if (!theaterToken) {
       return <Navigate to="/theaterlogin" />;
     }
-  
+
     return children;
   };
 
@@ -127,6 +127,8 @@ function App() {
 
 
         <Routes>
+
+          {/* User Routes */}
           <Route path="/login" element={!userToken ? <Userlogin /> : <Navigate to="/" />} />
           <Route path="/">
             <Route index={true} element={<Userhome />} />
@@ -145,6 +147,8 @@ function App() {
             <Route path="/booktickets/summary" element={<SummaryPage />} />
             <Route path="/booking" element={<Ticket />} />
           </Route>
+
+          {/* Admin Routes */}
 
 
           <Route path="/adminlogin" element={!AdminToken ? <AdminLogin /> : <Navigate to="/admin" />} />
@@ -168,6 +172,10 @@ function App() {
             <Route path="chat" element={<Chat />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
+
+
+
+          {/* Theater routes*/}
 
 
           <Route path="/theaterlogin" element={!TheaterToken ? <TheaterLogin /> : <Navigate to="/theater" />} />

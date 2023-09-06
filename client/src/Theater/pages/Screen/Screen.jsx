@@ -13,11 +13,10 @@ import { Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect , useState } from "react";
 import axios from "../../../utils/axios";
 import { toast, ToastContainer } from "react-toastify";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useState } from "react";
 import { deleteShowInfo, getscreen } from "../../../utils/Constants";
 
 import Swal from "sweetalert2";
@@ -34,10 +33,10 @@ const Screen = () => {
     toast.error(error, {
       position: "top-right",
     });
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.theater?.token);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const theaterId = useSelector((state) => state.theater);
+  const theaterId = useSelector((state) => state.theater?.theater);
   const [theater, setTheaters] = useState();
 
   const getTheater = async () => {

@@ -15,7 +15,7 @@ const Poster = () => {
   const [post, setPost] = useState([]);
   console.log(post,'hhhhhh');
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin?.token);
   const generateError = (error) =>
     toast.error(error, {
       position: "top-right",
@@ -106,7 +106,7 @@ const Poster = () => {
         <Sidebar />
         <div className="newContainer">
           <Navbar />
-          <div className="top">
+          <div className="top" >
             <h1>ADD POSTER</h1>
           </div>
           <div className="bottom">
@@ -126,7 +126,7 @@ const Poster = () => {
                 encType="multipart/form-data"
                 id="form"
               >
-                <div className="formInput">
+                <div className="formInput" >
                   <label htmlFor="file">
                     Movie poster:{" "}
                     <DriveFolderUploadOutlinedIcon className="icon" />

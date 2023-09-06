@@ -5,8 +5,11 @@ module.exports = () => {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	};
+	const dbObj={
+		dbName: 'reelrush'
+	}
 	try {
-		mongoose.connect(process.env.DB, connectionParams);
+		mongoose.connect(process.env.DB, dbObj);
 		console.log("Connected to database successfully");
 	} catch (error) {
 		console.log(error);

@@ -15,9 +15,9 @@ import { ReservationDetailsOneTheater } from "../../../utils/Constants";
 import { toast, ToastContainer } from "react-toastify";
 
 const BookingDetails = () => {
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.theater.token);
   const [info, setInfo] = useState([]);
-  const theater = useSelector((state) => state.theater);
+  const theater = useSelector((state) => state.theater.theater);
   const theaterId = theater._id;
 
   const generateError = (error) =>
@@ -72,7 +72,7 @@ const BookingDetails = () => {
                   <TableCell className="tableCell">{info._id}</TableCell>
 
                   <Link
-                    to={`/Bookingview/${info._id}`}
+                    to={`/theater/Bookingview/${info._id}`}
                     style={{ textDecoration: "none" }}
                   >
                     <TableCell align="left">

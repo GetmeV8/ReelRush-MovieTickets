@@ -13,7 +13,7 @@ const Single = () => {
         <h1 className="title">USER LIST</h1>
           <List/>
         </div>
-      </div>
+      </div> 
     </div>
   );
 };

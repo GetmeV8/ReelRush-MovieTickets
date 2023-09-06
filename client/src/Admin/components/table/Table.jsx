@@ -148,7 +148,6 @@ const List = () => {
       )
       .then((respose) => {
         setUsers(respose.data);
-        console.log(respose, "unbnnnnnnblocccccekd");
       })
       .then(() => {
         navigate(window.location.pathname, { replace: true });
@@ -171,7 +170,7 @@ const List = () => {
 
   return (
     <>
-      <div className="search">
+      <div className="search" style={{ backgroundColor: "white" }}>
         <input
           type="text"
           name="query"

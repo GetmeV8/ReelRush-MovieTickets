@@ -1,5 +1,4 @@
 .table {
-
   .cellWrapper {
     display: flex;
     align-items: center;
@@ -21,13 +20,16 @@
       color: green;
       background-color: rgba(0, 128, 0, 0.151);
     }
+
     &.Pending {
       color: goldenrod;
       background-color: rgba(189, 189, 3, 0.103);
     }
-  } 
-  
-}.search {
+  }
+
+}
+
+.search {
   display: flex;
   align-items: center;
   border: 1px solid #ccc;
@@ -51,5 +53,3 @@
   height: 30px;
   width: 30px;
 }
-
-
