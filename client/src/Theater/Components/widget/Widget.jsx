@@ -20,9 +20,9 @@ const Widget = ({ type }) => {
   const [totalRevene, setTotalRevene] = useState([]);
   const [count, setCount] = useState([]);
 
-  const theater = useSelector((state) => state.theater);
+  const theater = useSelector((state) => state.theater?.theater);
   const theaterId = theater?._id;
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.theater?.token);
   useEffect(() => {
     const fetchData = async () => {
       try {

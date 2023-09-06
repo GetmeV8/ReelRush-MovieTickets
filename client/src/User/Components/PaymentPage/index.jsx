@@ -68,8 +68,8 @@ function PaymentsPage({ proceed, allinfo }) {
   const [state, setState] = React.useState(false);
   const [counter, setCounter] = React.useState(true);
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
-  const token = useSelector((state) => state.token);
+  const user = useSelector((state) => state.user?.user);
+  const token = useSelector((state) => state.user?.token);
 
   const handleClose = () => {
     setState(false);
@@ -101,6 +101,8 @@ function PaymentsPage({ proceed, allinfo }) {
         TikectCount: ticketList.silver.length,
         movieId: allinfo.movieId,
       };
+
+      console.log(reservation, paymentId, total, "this is in index.jsx")
 
       axios
         .post(
@@ -175,7 +177,7 @@ function PaymentsPage({ proceed, allinfo }) {
   };
 
   const STRIPE_PUBLISHABLE_KEY =
-    "pk_test_51NGGAgSILY9DnJe4VlW3FsMtvCmzwoWswmOUxB1qAaR3C8fDkhxexUj55MPEjIvRLpWsdXzmugcUPpHQFrGoxJf700dbWMrSda";
+    "pk_test_51Ni9RwSFkGCwmvpzJfUJDh2TMxjDoeBzbAICHb7WRMg1UQ1iehRc7ZmTsrUl3KvvKIPiU2ivWwIMkKRvWBhJszY500weurDBky";
 
   const stripeTestPromise = loadStripe(STRIPE_PUBLISHABLE_KEY);
 

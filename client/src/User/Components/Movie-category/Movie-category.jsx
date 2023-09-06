@@ -40,7 +40,7 @@
 //     axios
 //       .get(`${categorymovie}/${category}/${userId}`)
 //       .then((response) => {
-        
+
 
 //         getAllMovie(response.data);
 //       })
@@ -201,17 +201,17 @@
 //                           {movie.duration}{" "}
 //                           <span style={{ color: "white" }}>min</span>
 //                         </span>
-                      
+
 //                       </h5>
 //                     </Link>
 //                   </div>
-                 
+
 //                 </div>
 //               </Link>
 //             );
 //           })}
 //       </div>
-    
+
 //     </>
 //   );
 // };
@@ -220,23 +220,22 @@
 
 import Button from "@mui/material/Button";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "../../utils/axios";
 import { addWishlist, removeWishlist, categorymovie } from "../../../utils/Constants";
 import { useSelector, useDispatch } from "react-redux";
 import { setMovies, setLogin } from "../../../User/Redux/store";
 import { toast } from "react-toastify";
-import { useParams } from 'react-router-dom';
 import {
   IconButton,
 } from "@mui/material";
 import { Favorite } from "@mui/icons-material";
 
 const Moviecategory = () => {
-  const user = useSelector((state) => state.user);
-  const token = useSelector((state) => state.token);
+  const user = useSelector((state) => state.user.user);
+  const token = useSelector((state) => state.user.token);
   const wishlist = useSelector((state) => state.user?.wishlist || []);
-  const searchKey = useSelector((state) => state.searchKey);
+  const searchKey = useSelector((state) => state.user.searchKey);
   const dispatch = useDispatch();
   const userId = user ? user._id : null;
   const { category } = useParams();
@@ -270,29 +269,29 @@ const Moviecategory = () => {
           movieId,
           userId,
         },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((response) => {
-        const updatedWishlist = response.data.wishlist;
-        const updatedUser = { ...user, wishlist: updatedWishlist };
-        dispatch(setLogin({ user: updatedUser, token: token }));
-        toast.error("Movie removed from FAVOURITES!", {
-          position: toast.POSITION.TOP_RIGHT,
-          autoClose: 1000,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((response) => {
+          const updatedWishlist = response.data.wishlist;
+          const updatedUser = { ...user, wishlist: updatedWishlist };
+          dispatch(setLogin({ user: updatedUser, token: token }));
+          toast.error("Movie removed from FAVOURITES!", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 1000,
+          });
+        })
+        .catch((error) => {
+          if (error.response) {
+            generateError(error.response.data.message);
+          } else {
+            generateError("Network error. Please try again later.");
+          }
         });
-      })
-      .catch((error) => {
-        if (error.response) {
-          generateError(error.response.data.message);
-        } else {
-          generateError("Network error. Please try again later.");
-        }
-      });
     } else {
       axios
         .post(addWishlist, {
@@ -300,29 +299,29 @@ const Moviecategory = () => {
           movieId,
           userId,
         },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((response) => {
-        const updatedWishlist = response.data.wishlist;
-        const updatedUser = { ...user, wishlist: updatedWishlist };
-        dispatch(setLogin({ user: updatedUser, token: token }));
-        toast.success("Movie added to FAVOURITES!", {
-          position: toast.POSITION.TOP_RIGHT,
-          autoClose: 1000,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((response) => {
+          const updatedWishlist = response.data.wishlist;
+          const updatedUser = { ...user, wishlist: updatedWishlist };
+          dispatch(setLogin({ user: updatedUser, token: token }));
+          toast.success("Movie added to FAVOURITES!", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 1000,
+          });
+        })
+        .catch((error) => {
+          if (error.response) {
+            generateError(error.response.data.message);
+          } else {
+            generateError("Network error. Please try again later.");
+          }
         });
-      })
-      .catch((error) => {
-        if (error.response) {
-          generateError(error.response.data.message);
-        } else {
-          generateError("Network error. Please try again later.");
-        }
-      });
     }
   };
 

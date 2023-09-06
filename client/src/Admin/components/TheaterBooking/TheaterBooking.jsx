@@ -18,7 +18,7 @@ import { useSelector } from "react-redux";
 const TheaterBooking = () => {
   const [info, setInfo] = useState({ docs: [] });
   const [page, setPage] = useState(1);
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin.token);
   const generateError = (error) =>
     toast.error(error, {
       position: "top-right",

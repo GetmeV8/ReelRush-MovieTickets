@@ -18,7 +18,7 @@ import { toast, ToastContainer } from "react-toastify";
 
 const MovieList = () => {
   const navigate = useNavigate();
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin.token);
   const [movies, getAllMovie] = useState([]);
   useEffect((key) => {
     getUsersList();

@@ -66,7 +66,7 @@ const TheaterLogin = () => {
       <div className={styles.login_form_container}>
         <div className={styles.left}>
           <form className={styles.form_container} onSubmit={formik.handleSubmit} >
-            <h1>Login to CinebooK!</h1>
+            <h1>Login to ReelRush!</h1>
             <input
               type="email"
               placeholder="Email"

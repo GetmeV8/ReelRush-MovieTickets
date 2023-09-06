@@ -13,7 +13,7 @@ import Button from "@mui/material/Button";
 import ShowReview from "../../Components/Review/showReview";
 import { Box, Divider } from "@mui/material";
 import Swal from "sweetalert2";
-import { getAllReview, getMovie,addWishlist,removeWishlist } from "../../../utils/Constants";
+import { getAllReview, getMovie,addWishlist,removeWishlist, userGetMovie } from "../../../utils/Constants";
 import { toast, ToastContainer } from "react-toastify";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -23,8 +23,8 @@ const Moviedetails = () => {
   const wishlist = useSelector((state) => state.user?.wishlist || []);
   let { id: movieId } = useParams();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
-  const token = useSelector((state) => state.token);
+  const user = useSelector((state) => state.user?.user);
+  const token = useSelector((state) => state.user?.token);
   const [open, setOpen] = React.useState(false);
   const [submit, setsubmit] = useState(false);
   const [review, setreview] = useState();
@@ -57,15 +57,14 @@ const Moviedetails = () => {
       position: "top-right",
     });
 
-  useEffect(() => {
-    getOneMovie();
-  }, [movieId]);
 
   const getOneMovie = () => {
     try {
+      console.log("got here")
       axios
-        .get(`${getMovie}/${movieId}`)
+        .get(`${userGetMovie}/${movieId}`)
         .then((response) => {
+          console.log(response, "in get one movie")
           getMoviee(response.data);
         })
         .catch((error) => {
@@ -95,6 +94,10 @@ const Moviedetails = () => {
     });
     setreview(data);
   };
+
+  useEffect(() => {
+    getOneMovie();
+  }, [movieId]);
 
   useEffect(() => {
     getReview();
@@ -127,7 +130,6 @@ const Moviedetails = () => {
         )
         .then((response) => {
           const updatedWishlist = response.data.wishlist;
-         console.log(updatedWishlist,">>>>>>>>>>>>>>>>>>>>>><<<<<okayy")
          const updatedUser = {...user,wishlist:updatedWishlist };
          dispatch(setLogin({ user:updatedUser, token:token }));
          toast.error("Movie removed from FAVOURITES!", {
@@ -158,7 +160,6 @@ const Moviedetails = () => {
           )
           .then((response) => {
             const updatedWishlist = response.data.wishlist;
-           console.log(updatedWishlist,">>>>>>>>>>>>>>>>>>>>>><<<<<okayy")
            const updatedUser = {...user,wishlist:updatedWishlist };
            dispatch(setLogin({ user:updatedUser, token:token }));
            toast.success("Movie added to FAVOURITES!", {

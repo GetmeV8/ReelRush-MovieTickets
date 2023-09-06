@@ -453,6 +453,7 @@ module.exports = {
       const ReservationDetails = await Reservation.paginate({}, options);
       res.json(ReservationDetails);
     } catch (error) {
+      console.log(error)
       res.status(500).send({ message: "Internal Server Error" + error });
     }
   },
@@ -500,11 +501,12 @@ module.exports = {
     }
   },
   reservationDetails: async (req, res) => {
+    console.log("inside reservationDetails")
     try {
       const reservationDetails = await Reservation.find();
-
       res.json(reservationDetails);
     } catch (error) {
+      console.log(error)
       res.status(500).send({ message: "Internal Server Error" + error });
     }
   },

@@ -5,8 +5,8 @@ const initialState = {
   user: null,
   token: null,
   movies: [],
-  date: null,
-  selectedMovie: null,
+  date: "",
+  selectedMovie: "",
   setBookedDetails: null,
   getSeatInformation: null,
   wishlist: [],
@@ -55,7 +55,7 @@ export const userSlice = createSlice({
       state.searchKey = action.payload.searchKey;
     },
     setMovies: (state, action) => {
-      state.movies = action.payload.movies;
+      state.movies = action.payload;
     },
     setOtp: (state, action) => {
       state.otp = action.payload.otp;
@@ -64,10 +64,12 @@ export const userSlice = createSlice({
       state.tempemail = action.payload.tempemail;
     },
     setDates: (state, action) => {
-      state.date = action.payload.date;
+      console.log("in user slice date", action)
+      state.date = action.payload?.date;
     },
     handleSelectDate: (state, action) => {
-      state.date = action.payload.date;
+      console.log("in user slice date", action)
+      state.date = action.payload?.date;
       state.day = action.payload.day;
     },
     setWishlist: (state, action) => {
@@ -90,7 +92,6 @@ export const {
   setPosts,
   setPost,
   setUser,
-  setMovie,
   setSearchKey,
   setMovies,
   setOtp,
@@ -101,4 +102,5 @@ export const {
   showLoading,
   hideLoading,
 } = userSlice.actions;
+console.log(")))))))))))",setMovies)
 export default userSlice.reducer;

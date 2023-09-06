@@ -16,6 +16,7 @@ import {
   getAllTheater,
   usergetMovies,
   searchMovie,
+  usergetMovie,
 } from "../../../utils/Constants";
 
 import { toast, ToastContainer } from "react-toastify";
@@ -84,7 +85,7 @@ const Header = () => {
     setAnchorEl(null);
   };
 
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state?.user?.user);
   const { pathname } = useLocation();
   const headerRef = useRef(null);
   const active = headerNav.findIndex((e) => e.path === pathname);
@@ -266,7 +267,7 @@ const Header = () => {
       <div className="header__wrap container">
         <div className="logo">
           <Link style={{ textDecoration: "none", color: "white" }} to="/">
-            CINE <span style={{ color: "rgb(30,29,34)" }}>BOOK</span>
+            Reel <span style={{ color: "rgb(30,29,34)" }}>Rush</span>
           </Link>
         </div>
         <ul className="header__nav">

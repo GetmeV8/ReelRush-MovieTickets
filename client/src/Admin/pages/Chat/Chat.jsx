@@ -19,8 +19,8 @@ export default function Chat() {
   const [currentUser, setCurrentUser] = useState(undefined);
   const [messages, setMessages] = useState([]);
 
-  const Admin = useSelector((state) => state.admin);
-  const token = useSelector((state) => state.token);
+  const Admin = useSelector((state) => state.admin?.admin);
+  const token = useSelector((state) => state.admin.token);
 
   useEffect(() => {
     async function setUser() {

@@ -11,7 +11,7 @@ const DailyRevenueGraph = ({ aspect, title }) => {
     toast.error(error, {
       position: "top-right",
     });
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin?.token);
   const date = new Date().toISOString().slice(0, 10);
 
   useEffect(() => {

@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 
 const Month = ({ aspect, title }) => {
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin.token);
   const generateError = (error) =>
     toast.error(error, {
       position: "top-right",
@@ -53,6 +53,7 @@ const Month = ({ aspect, title }) => {
           },
         })
         .then((response) => {
+          console.log(")))))))))))))))))))))))))))))",response)
           // Group bookings by month and calculate total revenue
           const bookingsByMonth = response.data.reduce((result, booking) => {
             const month = new Date(booking.bookedDate).getMonth();

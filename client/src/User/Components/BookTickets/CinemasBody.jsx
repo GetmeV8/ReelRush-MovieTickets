@@ -9,7 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { experimentalStyled as styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import { getMovie, getScreenShows } from "../../../utils/Constants";
+import { getMovie, getScreenShows, userGetMovie } from "../../../utils/Constants";
 import { toast, ToastContainer } from "react-toastify";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -21,8 +21,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export const CinemasBody = () => {
-  const date = useSelector((state) => state.date);
-  const token = useSelector((state) => state.token);
+  const date = useSelector((state) => state.user?.date);
+  const token = useSelector((state) => state.user?.token);
   let { id: movieId } = useParams();
   const [movies, getMoviee] = useState([]);
   const [theater, setTheater] = useState([]);
@@ -39,7 +39,7 @@ export const CinemasBody = () => {
   const getOneMovie = () => {
     try {
       axios
-        .get(`${getMovie}/${movieId}`)
+        .get(`${userGetMovie}/${movieId}`)
         .then((response) => {
           getMoviee(response.data);
         })

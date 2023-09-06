@@ -2,8 +2,8 @@ import { useState } from "react";
 import axios from "../../utils/axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
-import {  googleSignup,userloginPost } from "../../../utils/Constants";
-import { setLogin,setWishlist } from "../../../state/user/userSlice";
+import { googleSignup, userloginPost } from "../../../utils/Constants";
+import { setLogin, setWishlist } from "../../../state/user/userSlice";
 import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 import React from "react";
@@ -37,22 +37,21 @@ const validate = (values) => {
 const Userlogin = () => {
   const navigate = useNavigate();
   async function handleCallbackResponse(response) {
-
     const userObject = jwt_decode(response.credential);
 
     if (userObject && userObject.email && userObject.email_verified) {
       const { google } = await axios.post(googleSignup, {
-          email: userObject.email,
-        }).then((response) => {
-          dispatch(setLogin({ user: response.data.user, token: response.data.token }));
-		  google.accounts.id.prompt();
-		  setTimeout(() => {
-			navigate("/");
-		  }, 2000);
-        })
+        email: userObject.email,
+      }).then((response) => {
+        dispatch(setLogin({ user: response.data.user, token: response.data.token }));
+        google.accounts.id.prompt();
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      })
         .catch((error) => {
           setError(error.response.data.message);
-        
+
         });
     }
   }
@@ -68,7 +67,7 @@ const Userlogin = () => {
       size: "large",
     });
   }, []);
- 
+
 
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -84,8 +83,8 @@ const Userlogin = () => {
         const url = userloginPost;
         const { data } = await axios.post(url, values);
         const updatedWishlist = data.user.wishlist;
-        console.log(updatedWishlist,">>>>in login")
-      dispatch(setWishlist(updatedWishlist));
+        console.log(updatedWishlist, ">>>>in login")
+        dispatch(setWishlist(updatedWishlist));
         dispatch(setLogin({ user: data.user, token: data.token }));
         setTimeout(() => {
           navigate("/");
@@ -96,7 +95,7 @@ const Userlogin = () => {
           autoClose: 1000,
         });
 
-      
+
       } catch (error) {
         if (
           error.response &&

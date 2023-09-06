@@ -7,9 +7,10 @@ import { searchMovie } from "../../../utils/Constants";
 import { toast, ToastContainer } from "react-toastify";
 
 const MovieList = (props) => {
-  const [searchedMovies, setSearchedMovies] = useState([]);
-  const searchKey = useSelector((state) => state.searchKey);
   
+  const [searchedMovies, setSearchedMovies] = useState([]);
+  const searchKey = useSelector((state) => state.user.searchKey);
+  const movies = useSelector(s => s.user?.movies)
   const generateError = (error) =>
     toast.error(error, {
       position: "top-right",
@@ -17,7 +18,7 @@ const MovieList = (props) => {
 
   const searchMovies = async (searchKey) => {
     try {
-      const searchedMovies = await axios
+    axios
         .get(`${searchMovie}/${searchKey}`)
         .then((response) => {
           setSearchedMovies(response.data.movie);
@@ -39,10 +40,16 @@ const MovieList = (props) => {
       }
     }
   };
+  
+  useEffect(()=>{
+    setSearchedMovies(movies)
+  },[])
+
 
   useEffect(() => {
-    
-    searchMovies(searchKey);
+    if(searchKey){
+      searchMovies(searchKey);
+    }
   }, [searchKey]);
 
   return (

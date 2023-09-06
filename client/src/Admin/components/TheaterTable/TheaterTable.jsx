@@ -28,7 +28,7 @@ const TheaterTable = () => {
     toast.error(error, {
       position: "top-right",
     });
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin.token);
   const [info, setInfo] = useState({ docs: [] });
 
   const [page, setPage] = useState(1);

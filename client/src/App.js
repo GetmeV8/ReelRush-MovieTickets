@@ -186,7 +186,7 @@ function App() {
             <Route path="Paymnetview/:id" element={<PaymentViewList />} />
             <Route path="Bookingview/:id" element={<TheaterBookingViewList />} />
             <Route path="salesreport" element={<TheaterReport />} />
-            <Route path="theater/chat" element={<TheaterChat />} />
+            <Route path="chat" element={<TheaterChat />} />
             <Route path='*' element={<PageNotFound />} />
           </Route>
         </Routes>

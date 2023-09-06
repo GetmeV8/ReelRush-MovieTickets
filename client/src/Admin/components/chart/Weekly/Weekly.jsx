@@ -8,7 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
 
 const Weekly = ({ aspect, title }) => {
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin?.token);
   const generateError = (error) =>
     toast.error(error, {
       position: "top-right",

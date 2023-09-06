@@ -2,7 +2,7 @@ import React, { useState , useCallback ,useEffect } from "react";
 import "./new.scss";
 import { useForm } from "react-hook-form";
 import axios from "../../../utils/axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Link, useParams} from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 // import { addMovie } from "../../utils/Constants";
 import Sidebar from "../../Components/sidebar/Sidebar";
@@ -12,13 +12,12 @@ import { applicationPost, getOneTheater } from "../../../utils/Constants";
 import { useSelector, useDispatch } from "react-redux";
 import { setTheater } from "../../../state/theater/theaterSlice";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import { Link, useParams } from "react-router-dom";
 const New = () => {
-  const theater = useSelector((state) => state.theater);
+  const theater = useSelector((state) => state.theater?.theater);
 
   const theaterId = theater?._id;
   console.log(theaterId)
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.theater?.token);
 
   const [info, setInfo] = useState();
 

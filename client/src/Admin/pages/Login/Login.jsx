@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "../../../utils/axios";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from './styles.module.scss'
 import { loginPostAdmin } from "../../../utils/Constants";
 import { setLogin } from "../../../state/admin/adminSlice";
@@ -14,13 +14,12 @@ const AdminLogin = () => {
 	const handleChange = ({ currentTarget: input }) => {
 		setDatas({ ...datas, [input.name]: input.value });
 	};
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = loginPostAdmin;
+			const url = loginPostAdmin;                        
 			const { data } = await axios.post(url, datas);
-			dispatch(setLogin({admin: data.admin, token: data.token}))
+			dispatch(setLogin({ admin: data?.admin?.admin, token: data?.token }));
 			navigate('/admin/home')
 		} catch (error) {
 			if (
@@ -62,11 +61,11 @@ const AdminLogin = () => {
 							Login
 						</button>
 					</form>
-					
+
 				</div>
 				<div className={styles.right}>
 					<h1 >New Here ?</h1>
-					
+
 				</div >
 			</div>
 		</div>

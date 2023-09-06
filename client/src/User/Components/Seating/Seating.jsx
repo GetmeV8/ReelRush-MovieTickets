@@ -23,7 +23,7 @@ function Seating({
   const dispatch = useDispatch()
   const { search } = location;
   const searchParams = new URLSearchParams(location.search);
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.user?.token);
   // Access URL parameters
   const date = searchParams.get("date");
   const time = searchParams.get("time");
@@ -42,7 +42,7 @@ function Seating({
 
   const navigate = useNavigate();
   const [check, SetCheck] = useState([]);
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user?.user);
   const generateError = (error) =>
     toast.error(error, {
       position: "top-right",

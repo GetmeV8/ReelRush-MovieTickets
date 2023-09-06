@@ -26,7 +26,7 @@ import { toast, ToastContainer } from "react-toastify";
 const List = () => {
   const [users, setUsers] = useState({ docs: [] });
   const [page, setPage] = useState(1);
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin.token);
   const searchBy = (e) => {
     let key = e.target.value;
     if (!key) {

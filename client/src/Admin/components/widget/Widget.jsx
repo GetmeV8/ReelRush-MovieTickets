@@ -22,7 +22,7 @@ const Widget = ({ type }) => {
 
   const [Theater, setTheater] = useState([]);
 
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin.token);
   const generateError = (error) =>
     toast.error(error, {
       position: "top-right",

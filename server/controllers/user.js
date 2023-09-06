@@ -109,7 +109,6 @@ module.exports = {
     try {
 
       const email = req.params.email;
-      console.log(email);
       var user = await User.findOne({ email: email });
 
       if (!user)
@@ -126,7 +125,6 @@ module.exports = {
   },
   //User Send Otp
   userOtpSend: async (req, res) => {
-    console.log(">>>>>>>>>>>>>>>>>>>1>>>>>", req.body);
     const { email } = req.body;
 
     if (!email) {
@@ -160,7 +158,6 @@ module.exports = {
 
           transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-              console.log(error, info)
               res.status(400).json({ message: "Email not Send" });
             } else {
               res
@@ -232,8 +229,10 @@ module.exports = {
   getMovie: async (req, res) => {
     const movieId = req.params.id;
     try {
-      const movies = await Movie.findOne({ _id: Object(movieId) });
-      res.json(movies);
+      console.log(movieId, "get movies")
+      const movie = await Movie.findOne({ _id: movieId });
+      console.log("get movies",movie)
+      res.json(movie);
     } catch (error) {
       res.status(500).json({ message: "something went wrong" + error });
     }
@@ -274,12 +273,12 @@ module.exports = {
   },
   getReview: async (req, res) => {
     try {
-      let id = req.params.id;
-
-      const data = await Movie.findOne({ _id: id });
-
-      res.status(200).json(data?.Review?.reverse());
-    } catch (error) { }
+      let id = req.params?.id;
+  const data = await Movie.findOne({ _id: id }).select("Review").sort({"Review.date":-1});
+      res.status(200).json(data?.Review);
+    } catch (error) {
+      console.error(error)
+     }
   },
   deleteReview: async (req, res) => {
     let date = req.params.date;
@@ -311,7 +310,6 @@ module.exports = {
   categorymovie: async (req, res, next) => {
     try {
       var { id: category, userId } = req.params;
-      console.log(category, "*********************", userId);
       if (category === "FAVOURITE MOVIES") {
         User.findOne({ _id: userId }, "wishlist")
           .populate({
@@ -321,19 +319,16 @@ module.exports = {
           })
           .exec((err, user) => {
             if (err) {
-              console.log(err);
               return res.status(500).json({ error: "Internal server error" });
             }
             if (!user) {
               return res.status(404).json({ error: "User not found" });
             }
             const favoriteMovies = user.wishlist;
-            console.log(favoriteMovies);
             res.json(favoriteMovies);
           });
       } else {
         Movie.find({ genre: category }).then((response) => {
-          console.log(response);
           res.json(response);
         });
       }
@@ -413,7 +408,6 @@ module.exports = {
           },
         },
       ]);
-      console.log(">>>>>>>>>>>><<<<<<<<<<ok", data)
       res.json({ data });
     } catch (error) {
       res.status(500).json({ message: "something went wrong" + error });
@@ -436,16 +430,16 @@ module.exports = {
         showDate: date,
         seats: { $elemMatch: { isReserved: true } },
       });
-      console.log(data);
       res.status(200).json(data);
     } catch (error) {
       res.status(500).json({ message: "something went wrong" + error });
     }
   },
   reservation: async (req, res) => {
+    console.log(req.params)
+    console.log("got here")
     const { id } = req.params;
     const { total } = req.params;
-    console.log("lllllllllll", req.body.data.Email, "jjjjjjjjjjjjjj")
     const { data: {
       ticketPrice,
       userId,
@@ -464,8 +458,11 @@ module.exports = {
       movieId,
     },
     } = req.body;
-    console.log(Email, "555555")
-    try {
+    console.log("got here")
+
+    try {    
+      console.log("got here")
+
       const payment = await stripe.paymentIntents.create({
         amount: total,
         currency: "INR",
@@ -474,11 +471,12 @@ module.exports = {
         confirm: true,
         return_url: "http://localhost:3000/booking",
       });
+      console.log("got here", payment)
       const datas = await Reservation(req.body.data).save();
+      
       const qrcode = await generateQR(
         "http//:localhost:3000/reservation/" + datas._id
       );
-
       await Reservation.findByIdAndUpdate(datas._id, {
         $set: { qrcode: qrcode },
       });
@@ -514,9 +512,7 @@ module.exports = {
       };
 
       transporter.sendMail(mailOptions, (error, info) => {
-        console.log("entered send mail")
         if (error) {
-          console.log(error)
           res.status(500).json({ message: "Email not sent" });
         } else {
           res.json({ status: "payment successfull", datas, qrcode });
@@ -524,7 +520,6 @@ module.exports = {
       });
 
     } catch (error) {
-      console.log(error)
       res.status(500).json({ message: "something went wrong" + error });
     }
   },
@@ -541,10 +536,12 @@ module.exports = {
           }
 
           if (!reservation) {
-            return;
+            return; 
           }
 
           const qrcode = reservation.qrcode;
+          res.status(200).json(qrcode);
+
         }
       );
     } catch (error) {
@@ -552,7 +549,6 @@ module.exports = {
     }
   },
   addWishlist: async (req, res) => {
-    console.log(req.body, "FDDDDDDDDDDDDDDDDDDDDDDDDDDGF")
     const userId = req.body.userId;
     const { movieId } = req.body;
 
@@ -574,7 +570,6 @@ module.exports = {
     }
   },
   removeWishlist: async (req, res) => {
-    console.log(req.body, ">>>>>>>>>>>>>>>>>>>>>>>>>")
 
     const userId = req.body.userId;
     const { movieId } = req.body;

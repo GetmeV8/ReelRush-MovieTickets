@@ -15,7 +15,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
 const BookingViewList = () => {
   const { id: bookingId } = useParams();
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.theater?.token);
   const [info, setInfo] = useState();
   const [selectedApplication, setSelectedApplication] = useState({});
 

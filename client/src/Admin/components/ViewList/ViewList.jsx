@@ -1,9 +1,7 @@
 import "./ViewList.scss";
 import { getOneTheater } from "../../../utils/Constants";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "../../../utils/axios";
-import { useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { toast, ToastContainer } from "react-toastify";

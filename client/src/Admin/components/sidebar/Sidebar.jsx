@@ -52,7 +52,7 @@ const Sidebar = () => {
         }
       });
   }
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin.token);
   const [read, getRead] = useState([]);
   const [unmessage, setUnMessage] = useState([]);
 
@@ -69,7 +69,7 @@ const Sidebar = () => {
     toast.error(error, {
       position: "top-right",
     });
-  const admin = useSelector((state) => state.admin);
+  const admin = useSelector((state) => state.admin?.admin);
 
   const getUnread = () => {
     if (admin && admin._id) { 

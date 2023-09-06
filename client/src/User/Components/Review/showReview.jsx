@@ -11,36 +11,36 @@ import { toast, ToastContainer } from "react-toastify";
 function ShowReview({ movieInfo, submit, movieReviews }) {
   const movie = movieInfo;
   const [review, setreview] = useState(movieReviews);
-  const user = useSelector((state) => state.user);
-  const token = useSelector((state) => state.token);
+  const user = useSelector((state) => state.user?.user);
+  const token = useSelector((state) => state.user?.token);
   const generateError = (error) =>
     toast.error(error, {
       position: "top-right",
     });
-  const getReview = async () => {
-    try {
-      const { data } = await axios.get(`${getAllReview}/${movie._id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+  // const getReview = async () => {
+  //   try {
+  //     const { data } = await axios.get(`${getAllReview}/${movie._id}`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
 
-      setreview(data);
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        generateError(error.response.data.message);
-      }
-    }
-  };
+  //     setreview(data);
+  //   } catch (error) {
+  //     if (
+  //       error.response &&
+  //       error.response.status >= 400 &&
+  //       error.response.status <= 500
+  //     ) {
+  //       generateError(error.response.data.message);
+  //     }
+  //   }
+  // };
 
-  useEffect(() => {
-    getReview();
-  }, [submit]);
+  // useEffect(() => {
+  //   getReview();
+  // }, [submit]);
 
   useEffect(() => {
     setreview(movieReviews);
@@ -55,7 +55,7 @@ function ShowReview({ movieInfo, submit, movieReviews }) {
         },
       })
       .then((response) => {
-        setreview(response.data.updated);
+        setreview(response.data?.updated);
       })
       .catch((error) => {
         if (error.response) {

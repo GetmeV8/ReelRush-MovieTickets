@@ -26,7 +26,6 @@ const {
   cancelTicket,
   removeWishlist
 } = require("../controllers/user");
-const { User } = require("../models/user");
 const router = express.Router();
 
 router.post("/", UserSignup);
@@ -46,8 +45,8 @@ router.get("/categorymovie/:id/:userId?",categorymovie);
 router.get("/getAllCity", getAllCity);
 router.get("/getScreenShows/:id/:title",userverifyToken, getScreenShows);
 router.get("/seatReserved/:id/:time/:movieId/:date",userverifyToken, seatReserved);
-router.post("/reservation/:id/:total/", userverifyToken, reservation);
-router.get("/getQrcode",userverifyToken, getQrCode);
+router.post("/reservation/:id/:total/", reservation);
+router.get("/getQrcode/:movieId",userverifyToken, getQrCode);
 router.post("/addWishlist",userverifyToken,addWishlist);
 router.post("/removeWishlist",userverifyToken,removeWishlist);
 router.get("/history/:id", userverifyToken, getUserHistory);

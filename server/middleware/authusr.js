@@ -1,11 +1,9 @@
-const { User } = require("../models/user");
 const jwt = require("jsonwebtoken");
 
 const verifyToken =  async (req, res, next) => {
   try {
-    
     let token = req.header("Authorization");
-    
+        
     if (!token) {
       return res.status(403).send("Access Denied");
     }

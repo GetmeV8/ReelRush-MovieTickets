@@ -34,7 +34,7 @@ import {
   notificationCountTheater,
 } from "../../../utils/Constants";
 const Sidebar = () => {
-  const theater = useSelector((state) => state.theater);
+  const theater = useSelector((state) => state.theater?.theater);
   const [theaters, setTheater] = useState([]);
   const theaterId = theater?._id;
   const { dispatch } = useContext(DarkModeContext);
@@ -54,7 +54,7 @@ const Sidebar = () => {
       }
     });
   }
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.theater.token);
   const [read, getRead] = useState([]);
 
   const [unmessage, setUnMessage] = useState([]);
@@ -193,7 +193,7 @@ const getUnrededMessages = () => {
             <div>
               <p className="title">THEATER MANAGEMENT</p>
               <br />
-              <Link to="/screen" style={{ textDecoration: "none" }}>
+              <Link to="/theater/screen" style={{ textDecoration: "none" }}>
                 <li>
                   <FitScreenIcon className="icon" />
                   <span>SCREEN</span>
@@ -201,7 +201,7 @@ const getUnrededMessages = () => {
               </Link>
               <br />
               <br />
-              <Link to="/BookingDetails" style={{ textDecoration: "none" }}>
+              <Link to="/theater/BookingDetails" style={{ textDecoration: "none" }}>
                 <li>
                   <BookOnlineIcon className="icon" />
                   <span>BOOKING MANAGE</span>
@@ -209,7 +209,7 @@ const getUnrededMessages = () => {
               </Link>
               <br />
               <br />
-              <Link to="/PaymentDetails" style={{ textDecoration: "none" }}>
+              <Link to="/theater/PaymentDetails" style={{ textDecoration: "none" }}>
                 <li>
                   <PaymentIcon className="icon" />
                   <span>PAYMENT MANAGE</span>

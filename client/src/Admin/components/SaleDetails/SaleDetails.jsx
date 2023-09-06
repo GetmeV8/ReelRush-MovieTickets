@@ -27,7 +27,7 @@ const SaleDetails = () => {
   const tableRef = useRef(null);
   const [info, setInfo] = useState({ docs: [] });
   const [page, setPage] = useState(1);
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin.token);
   useEffect(() => {
     heelo();
   }, [page]);

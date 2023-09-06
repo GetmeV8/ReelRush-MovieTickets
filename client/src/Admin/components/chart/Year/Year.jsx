@@ -8,7 +8,7 @@ import {useSelector} from 'react-redux'
 
 
 const Year = ({ aspect, title }) => {
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin?.token);
 
   const generateError = (error) =>
   toast.error(error, {

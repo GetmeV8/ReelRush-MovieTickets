@@ -60,8 +60,8 @@ export const Calendar = () => {
       year: item.year,
       month: months.indexOf(item.monthFullName),
       day: item.date,
-    }).toDate();
-    dispatch(setDates({ date: selectedDate }));
+    }).toDate().toDateString();
+    dispatch(setDates({ date: selectedDate}));
   };
 
   const responsive = {

@@ -19,8 +19,8 @@ export default function Chat() {
   const [currentUser, setCurrentUser] = useState(undefined);
   const [unreadMessages, setUnreadMessages] = useState({});
 
-  const theater = useSelector((state) => state.theater);
-  const token = useSelector((state) => state.token);
+  const theater = useSelector((state) => state.theater?.theater);
+  const token = useSelector((state) => state.theater.token);
 
   useEffect(() => {
     async function setUser() {

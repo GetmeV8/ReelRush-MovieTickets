@@ -10,10 +10,10 @@ import Swal from "sweetalert2";
 import { toast, ToastContainer } from "react-toastify";
 const Ticket = () => {
   const navigate = useNavigate();
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.user?.token);
   const [history, sethistory] = useState([]);
 
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user?.user);
 
   const generateError = (error) =>
     toast.error(error, {
