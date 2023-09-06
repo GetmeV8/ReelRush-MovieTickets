@@ -10,9 +10,9 @@ function Contacts({ contacts, currentUser, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
   const [unreadMessages, setUnreadMessages] = useState({});
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin.token);
 
-  const admin = useSelector((state) => state.admin);
+  const admin = useSelector((state) => state.admin?.admin);
   useEffect(() => {
     if (currentUser) {
       setCurrentUserName(currentUser.username);

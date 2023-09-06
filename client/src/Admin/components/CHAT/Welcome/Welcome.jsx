@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Robot from "../../../../assets/robot.gif";
 import { useSelector } from "react-redux";
 export default function Welcome() {
-    const Admin = useSelector((state) => state.admin);
+    const Admin = useSelector((state) => state.admin?.admin);
   return (
     <Container>
       <img src={Robot} alt="" />

@@ -12,7 +12,7 @@ function Contacts({ contacts, currentUser, changeChat }) {
   const [currentSelected, setCurrentSelected] = useState(undefined);
   const [unreadMessages, setUnreadMessages] = useState({});
 
-  const theater = useSelector((state) => state.theater);
+  const theater = useSelector((state) => state.theater.theater);
   const sortedContacts = contacts.sort((a, b) => {
     const aLastMessageDate = a.latestMessage
       ? new Date(a.latestMessage.createdAt)
