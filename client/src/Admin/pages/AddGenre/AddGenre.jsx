@@ -24,14 +24,10 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 const AddGenre = () => {
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin.token);
   const dispatch = useDispatch();
-  const theater = useSelector((state) => state.theater);
+  const theater = useSelector((state) => state.theater.theater);
   const [genre, setGenre] = useState([]);
-  console.log(genre,'jjjjjjjjjj');
-
- 
-
   const getOnescreen = useCallback(async () => {
     
 

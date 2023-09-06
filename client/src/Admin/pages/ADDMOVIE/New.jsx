@@ -11,7 +11,7 @@ import { getgenre,MoviesPost } from "../../../utils/Constants";
 import Select from "react-select";
 import "./new.scss";
 const New = () => {
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.admin.token);
  
   const [genre, getAllgenre] = useState([]);
   useEffect((key) => {

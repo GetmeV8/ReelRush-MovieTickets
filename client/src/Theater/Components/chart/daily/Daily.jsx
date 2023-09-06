@@ -10,9 +10,9 @@ import { toast, ToastContainer } from "react-toastify";
 const DailyRevenueGraph = ({ aspect, title }) => {
   const [daily, setDaily] = useState([]);
 
-  const theater = useSelector((state) => state.theater);
+  const theater = useSelector((state) => state.theater.theater);
   const theaterId = theater?._id;
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.theater?.token);
   const date = new Date().toISOString().slice(0, 10);
 
   const generateError = (error) =>

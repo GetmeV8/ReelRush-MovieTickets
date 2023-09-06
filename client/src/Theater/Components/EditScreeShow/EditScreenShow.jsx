@@ -4,29 +4,27 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import axios from "../../../utils/axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addShow,
   editSreenShow,
   getscreens,
   postScreenInfo,
+  getMovies
 } from "../../../utils/Constants";
 import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { getMovies } from "../../../utils/Constants";
-import { useCallback } from "react";
 import { setTheater } from "../../../state/theater/theaterSlice";
 import Selects from "react-select";
 
 const AddScreen = () => {
   const { id: show } = useParams();
 
-  const token = useSelector((state) => state.token);
-  const theaterinfo = useSelector((state) => state.theater);
+  const token = useSelector((state) => state.theater?.token);
+  const theaterinfo = useSelector((state) => state.theater.theater);
 
   let screenDetails = null;
 

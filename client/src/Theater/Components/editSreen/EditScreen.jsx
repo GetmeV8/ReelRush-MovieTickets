@@ -26,7 +26,7 @@ const EditSreen = () => {
   const { id: screen } = useParams();
   const dispatch = useDispatch();
 
-  const theater = useSelector((state) => state.theater);
+  const theater = useSelector((state) => state.theater.theater);
   let screenDetails = null;
 
   for (let scr of theater.screen) {

@@ -1,17 +1,15 @@
 import "./chart.scss";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "../../../../utils/axios";
 import { useSelector } from "react-redux";
 import { ResponsiveContainer } from "recharts";
 import LineChart from "react-apexcharts";
-import { useEffect } from "react";
-import { useCallback } from "react";
 import { getReservation } from "../../../../utils/Constants";
 import { toast, ToastContainer } from "react-toastify";
 
 const Weekly = ({ aspect, title }) => {
-  const token = useSelector((state) => state.token);
-  const theater = useSelector((state) => state.theater);
+  const token = useSelector((state) => state.theater.token);
+  const theater = useSelector((state) => state.theater?.theater);
   const theaterId = theater?._id;
 
   const [week, setWeek] = useState();

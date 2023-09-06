@@ -8,7 +8,7 @@ import {useSelector} from 'react-redux'
 
 const Navbar = () => {
   const { dispatch } = useContext(DarkModeContext);
-  const theater = useSelector(state=>state.theater);
+  const theater = useSelector(state=>state.theater?.theater);
   return (
     <div className="navbar">
       <div className="wrapper">

@@ -8,9 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
-import { useEffect } from "react";
-import { useState } from "react";
-import { useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import axios from "../../../utils/axios";
 import { useSelector } from "react-redux";
 import { ReservationDetailsOneTheater } from "../../../utils/Constants";
@@ -19,12 +17,12 @@ import { toast, ToastContainer } from "react-toastify";
 
 const PaymentManage = () => {
   const [info, setInfo] = useState([]);
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.theater?.token);
   const generateError = (error) =>
     toast.error(error, {
       position: "top-right",
     });
-  const theater = useSelector((state) => state.theater);
+  const theater = useSelector((state) => state.theater?.theater);
   const theaterId = theater._id;
   useEffect(() => {
     heelo();

@@ -6,10 +6,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import { useEffect,useState,useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import axios from "../../../utils/axios";
 import { savePDF } from "@progress/kendo-react-pdf";
-import { useRef } from "react";
 import { useSelector } from "react-redux";
 import { ReservationDetailsOneTheater } from "../../../utils/Constants";
 import { toast, ToastContainer } from "react-toastify";
@@ -17,9 +16,9 @@ import { toast, ToastContainer } from "react-toastify";
 const SaleDetails = () => {
   const tableRef = useRef(null);
   const [info, setInfo] = useState([]);
-  const theater = useSelector((state) => state.theater);
+  const theater = useSelector((state) => state.theater.theater);
   const theaterId = theater._id;
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.theater?.token);
   const generateError = (error) =>
     toast.error(error, {
       position: "top-right",

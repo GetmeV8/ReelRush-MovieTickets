@@ -10,8 +10,8 @@ const Year = ({ aspect, title }) => {
   toast.error(error, {
     position: "top-right",
   });
-  const token = useSelector((state) => state.token);
-  const theater = useSelector(state=>state.theater);
+  const token = useSelector((state) => state.theater.token);
+  const theater = useSelector(state=>state.theater?.theater);
   const theaterId=theater?._id
   const [options, setOptions] = useState({
     chart: {

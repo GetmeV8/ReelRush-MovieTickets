@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Robot from "../../../../assets/robot.gif";
 import { useSelector } from "react-redux";
 export default function Welcome() {
-  const theater = useSelector((state) => state.theater);
+  const theater = useSelector((state) => state.theater?.theater);
 
   return (
     <Container>
