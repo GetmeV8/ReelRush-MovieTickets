@@ -469,7 +469,7 @@ module.exports = {
         description: "ReelRush",
         payment_method: id,
         confirm: true,
-        return_url: "http://reel-rush-movie-tickets-api.vercel.app/booking",
+        return_url: "http://reelrush-movietickets-api.vercel.app/booking",
         // return_url: "https://revolvebooks.online/booking",
       });
       console.log("got here", payment)
