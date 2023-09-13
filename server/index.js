@@ -20,7 +20,7 @@ connection();
 app.use(express.json());
 app.use(cors(
   {
-  origin:[`true`],
+  origin:[`http://reelrush-movietickets-api.vercel.app`],
   methods:"GET,PUT,PATCH,POST,DELETE",
 
 }
