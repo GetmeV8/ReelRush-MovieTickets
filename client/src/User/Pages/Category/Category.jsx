@@ -16,7 +16,7 @@ const Category = () => {
       </div>
       <div
         className=""
-        style={{ backgroundColor: "RGB(87 168 204)", paddingTop: "70px" }}
+        style={{ backgroundColor: "Black", paddingTop: "70px" }}
       >
         <h1 style={{ color: "white", paddingLeft: "100px" }}>
           {category}

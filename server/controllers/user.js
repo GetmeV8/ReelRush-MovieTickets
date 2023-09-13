@@ -470,12 +470,13 @@ module.exports = {
         payment_method: id,
         confirm: true,
         return_url: "http://localhost:3000/booking",
+        // return_url: "https://revolvebooks.online/booking",
       });
       console.log("got here", payment)
       const datas = await Reservation(req.body.data).save();
       
       const qrcode = await generateQR(
-        "http//:localhost:3000/reservation/" + datas._id
+        "http//::3000/reservation/" + datas._id
       );
       await Reservation.findByIdAndUpdate(datas._id, {
         $set: { qrcode: qrcode },

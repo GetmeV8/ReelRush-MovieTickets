@@ -125,7 +125,7 @@ const Usersignup = () => {
             onSubmit={formik.handleSubmit}
           >
             <h1>
-              CREATE <span style={{ color: "rgb(30,29,34)" }}>ACCOUNT</span>
+              CREATE ACCOUNT
             </h1>
             <br />
             <input
@@ -137,8 +137,6 @@ const Usersignup = () => {
               value={formik.values.username}
               className={styles.input}
             />
-           
-
             <input
               type="email"
               placeholder="Email"
