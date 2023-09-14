@@ -59,7 +59,7 @@ const Userlogin = () => {
     /* global google */
     google.accounts.id.initialize({
       client_id:
-        "869952252132-s0dfscmldh42h80ahbo6vr95r0pj41tb.apps.googleusercontent.com",
+        "38679285955-uke8iabf1vn3hbbi7gn3g5aair973e8o.apps.googleusercontent.com",
       callback: handleCallbackResponse,
     });
     google.accounts.id.renderButton(document.getElementById("signdiv"), {

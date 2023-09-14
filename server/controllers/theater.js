@@ -131,7 +131,6 @@ module.exports = {
   getMovies: async (req, res) => {
     try {
       const movies = await Movie.find();
-      console.log("sssssssssssssss")
       res.json(movies);
     } catch (error) {
       console.log(error)
@@ -325,7 +324,6 @@ module.exports = {
     }
   },
   getscreen: async (req, res) => {
-    console.log(">>>>>>>>><<<<<<<<<<<<<")
     try {
       const theatreId = req.params.id;
       const screeninfo = await Theater.findOne({ _id: theatreId });
@@ -402,7 +400,6 @@ module.exports = {
     }
   },
   getOneTheaterDayRevenue: async (req, res) => {
-    console.log(req.params,">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     try {
       const today = new Date(req.params.date); // get today's date
       const onDayRevenue = await Reservation.aggregate([

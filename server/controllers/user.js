@@ -229,9 +229,7 @@ module.exports = {
   getMovie: async (req, res) => {
     const movieId = req.params.id;
     try {
-      console.log(movieId, "get movies")
       const movie = await Movie.findOne({ _id: movieId });
-      console.log("get movies",movie)
       res.json(movie);
     } catch (error) {
       res.status(500).json({ message: "something went wrong" + error });
@@ -436,8 +434,6 @@ module.exports = {
     }
   },
   reservation: async (req, res) => {
-    console.log(req.params)
-    console.log("got here")
     const { id } = req.params;
     const { total } = req.params;
     const { data: {
@@ -458,19 +454,15 @@ module.exports = {
       movieId,
     },
     } = req.body;
-    console.log("got here")
 
     try {    
-      console.log("got here")
-
       const payment = await stripe.paymentIntents.create({
         amount: total,
         currency: "INR",
         description: "ReelRush",
         payment_method: id,
         confirm: true,
-        return_url: "http://reelrush-movietickets-api.vercel.app/booking",
-        // return_url: "https://revolvebooks.online/booking",
+        return_url: "https://revolvebooks.online/booking",
       });
       console.log("got here", payment)
       const datas = await Reservation(req.body.data).save();

@@ -7,7 +7,7 @@ const connection = require("./db");
 const userRoutes = require("./routes/users");
 const adminRoutes = require("./routes/admin");
 const theaterRoutes = require("./routes/theater");
-const MessageRouter = require('./routes/MessageRoutes')
+const MessageRouter = require('./routes/MessageRoutes');
 app.get('/',(req,res)=>{
   res.send("working fineeeeeeeeee")
 })

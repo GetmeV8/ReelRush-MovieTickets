@@ -4,7 +4,6 @@ const { Theater } = require("../models/Theater");
 
 module.exports = {
   addMessage: async (req, res, next) => {
-    console.log(">>>>>>>>>>>>>>>>>>>>>><<",req.body);
     try {
       const { from, to, message, recipientName, senderName } = req.body;
 

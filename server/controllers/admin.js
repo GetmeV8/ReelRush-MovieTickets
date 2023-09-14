@@ -59,7 +59,6 @@ module.exports = {
   },
 
   addmovies: async (req, res) => {
-    console.log(req.body)
     try {
       const movieExists = await Movie.findOne({
         title: req.body.title,
@@ -146,9 +145,7 @@ module.exports = {
         { _id: Object(id) },
         { $set: { Block: true } }
       );
-      console.log(user);
       const users = await User.paginate({}, options);
-      console.log(users,'oooooo');
       res.json(users);
     } catch (error) {
       res.status(500).send({ message: "Internal Server Error" + error });
@@ -292,7 +289,6 @@ module.exports = {
       if (!theater) {
         return res.status(404).json({ message: "Theater not found" });
       }
-      console.error(theater);
       res.json(theater);
     } catch (error) {
       console.error(error);
@@ -348,7 +344,6 @@ module.exports = {
     }
   },
   addgenre: async (req, res) => {
-    console.log(req.body,">>>>>>>>>>>>>>>>>>>>")
     try {
       const genreExists = await genre.findOne({
         genre: req.body.datas.genrename,
@@ -371,7 +366,6 @@ module.exports = {
     }
   },
   getgenre: async (req, res) => {
-   console.log(">>>>>>>>>>>")
     try {
       const genreres = await genre.find().sort("-createdAt");
 
@@ -381,7 +375,6 @@ module.exports = {
     }
   },
   deleteGenre: async (req, res) => {
-    console.log(req.params.id,">>>>>>1<<<<<<<<<<<<<<<<<<<")
     let id = req.params.id;
 
     try {
@@ -395,7 +388,6 @@ module.exports = {
     }
   },
   getGenreone: async (req, res) => {
-    
     const genreId = req.params.id;
     try {
       const genres = await genre.findOne({ genre:genreId });
@@ -406,7 +398,6 @@ module.exports = {
     }
   },
   editGenre: async (req, res) => {
-    console.log(req.body, ">>>>>>>>>>>>>>>>>>>>");
     const genreId = req.body.genrenameId;
     try {
       const updatedGenre = await genre.findByIdAndUpdate(
@@ -501,7 +492,6 @@ module.exports = {
     }
   },
   reservationDetails: async (req, res) => {
-    console.log("inside reservationDetails")
     try {
       const reservationDetails = await Reservation.find();
       res.json(reservationDetails);
