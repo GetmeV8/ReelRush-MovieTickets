@@ -20,7 +20,7 @@ connection();
 app.use(express.json());
 app.use(cors(
   {
-  origin:[`https://reelrush-movietickets-api.vercel.app`],
+  origin:[`https://revolvebooks.online`],
   methods:"GET,PUT,PATCH,POST,DELETE",
 
 }
@@ -34,7 +34,7 @@ const server = app.listen(port, () => {
 
 const io = socket(server,{
     cors:{
-      origin:[`true`],
+      origin:[`https://revolvebooks.online`],
     }
 })
                                 

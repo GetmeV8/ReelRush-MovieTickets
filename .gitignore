@@ -5,12 +5,12 @@ yarn-error.log
 
 # Backend
 /server/node_modules/
-/server/build/
+# /server/build/
 
 # Frontend
 /client/node_modules/
 # /client/build/
 
 # Environment variables
-.env
+# //.env
 .db
