@@ -527,14 +527,11 @@ module.exports = {
             console.error(err);
             return;
           }
-
           if (!reservation) {
             return; 
           }
-
           const qrcode = reservation.qrcode;
           res.status(200).json(qrcode);
-
         }
       );
     } catch (error) {

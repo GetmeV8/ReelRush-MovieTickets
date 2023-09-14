@@ -64,7 +64,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("setBlocked",(data)=>{
-    console.log('blooooooooo***************')
     const receiver = getUser(data.receiverId)
     console.log('blockeeeeeeeeeeeeeee ',receiver)
     if(receiver){
