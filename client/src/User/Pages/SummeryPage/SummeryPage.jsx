@@ -21,13 +21,10 @@ export default function SummaryPage() {
 
 
   const ticketList = location.state;
-
-
   if (ticketList && ticketList.silver) {
     const seat = ticketList.silver[0].seat;
-    console.log(seat);
   } else {
-    console.log("silver tickets not found");
+
   }
   const handleProceed = () => {
     setProceed(true);

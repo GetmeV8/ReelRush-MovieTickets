@@ -8,13 +8,11 @@ import "./Premier.scss";
 
 
 const Premier = () => {
-  const token = useSelector((state) => state.token);
+  const token = useSelector((state) => state.user.token);
 
   const [genre, setGenre] = useState([]);
 
   const getOnescreen = useCallback(async () => {
-    console.log(">1>>>>>>>>>>>>>>>")
-
     axios
       .get(getgenre, {
         headers: {
@@ -23,7 +21,6 @@ const Premier = () => {
         },
       })
       .then((response) => {
-        console.log(response.data, 'kkkkkkkk')
         setGenre(response.data);
       })
       .catch((error) => {
